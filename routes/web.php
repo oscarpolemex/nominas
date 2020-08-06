@@ -20,3 +20,4 @@ Route::get('/Login', function () {
 Route::get('/', function () {
     return view('layout.layout');
 });
+Route::resource('ServidoresPublicos',  'ServidoresPublicos');
