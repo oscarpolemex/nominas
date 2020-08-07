@@ -5,36 +5,45 @@
         text-decoration: none !important;
         color: #5B1E3B !important;
     }
+
     .contact {
         height: 400px;
     }
+
     .contact-info {
         margin-top: 10%;
     }
+
     .contact-info img {
         margin-bottom: 15%;
     }
+
     .contact-info h2 {
         margin-bottom: 10%;
     }
+
     .col-md-9 {
         background: #fff;
         padding: 3%;
         border-top-right-radius: 0.5rem;
         border-bottom-right-radius: 0.5rem;
     }
+
     label {
         font-size: 13px
     }
+
     .contact-form button {
         background: #25274d;
         color: #fff;
         font-weight: 600;
         width: 25%;
     }
+
     .contact-form button:focus {
         box-shadow: none;
     }
+
     .panel-danger {
         padding: 10px;
         background-color: #E6D0D4 !important;
@@ -73,25 +82,33 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="{{url('IMG/LXlegis.jpg')}}" />
+    <link rel="shortcut icon" href="{{url('IMG/LXlegis.jpg')}}"/>
+    <link href="{{ url('css/app.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
     <style>
         a {
             font-size: 15px !important;
             color: #BBBBBB;
             text-decoration: none;
         }
+
         a:link {
             color: #BBBBBB;
             text-decoration: none;
         }
+
         a:visited {
             color: #BBBBBB;
             text-decoration: none;
         }
+
         a:hover {
             color: #FFFFFF;
             text-decoration: none;
         }
+
         a:active {
             color: #BBBBBB;
             text-decoration: none;
@@ -101,10 +118,7 @@
 <body>
 
 <div class="wrapper">
-
     <!-- Sidebar  -->
-
-
     <nav id="sidebar" style="background-color: #5B1E3B">
         <div class="sidebar-header" style="background-color: #5B1E3B">
             <img src="{{url('IMG/NLogo.png')}}" class="img" width="80%">
@@ -131,9 +145,7 @@
             </li>
         </ul>
     </nav>
-
     <!-- Page Content  -->
-
     <div id="content">
         <nav class="navbar navbar-expand-lg" style="background-color: #682244">
             <div class="container-fluid">
@@ -173,13 +185,13 @@
             </div>
         </nav>    <!-- Page Content  -->
         <div class="resultados" id="resultados"></div>
-
+        <div class="container">
+            @yield('content')
+        </div>
     </div>
-    <div class="w3-content">
-        @yield('content')
-    </div>
-
 </div>
+<script src="{{ url('js/app.js') }}" type="text/javascript"></script>
+
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
