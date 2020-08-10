@@ -32,10 +32,11 @@
     <div class="form">
         <img src="{{url('IMG/Logo.png')}}" width="100%" alt=""/>
         <br><br>
-        <form class="login-form" action="login.php" method="post" id="form">
+        <form action="{{route('login')}}" method="POST" class="margin-bottom-0">
+            {{csrf_field()}}
 
-            <input type="text" placeholder="Usuario" name="username" id="usuario"/>
-            <input type="password" placeholder="Contraseña" name="password" id="clave"/>
+            <input type="text" placeholder="Usuario" name="email" id="email"/>
+            <input type="password" placeholder="password" name="password" id="clave"/>
             <br/>
             <button>login</button>
 

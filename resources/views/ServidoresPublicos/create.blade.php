@@ -163,5 +163,6 @@
             }
 
 
-        });    </script>
+        });
+    </script>
 @endsection
