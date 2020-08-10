@@ -3,7 +3,7 @@
         <style type="text/css">
             p{
                 text-align: justify;
-                padding: 10px;
+                padding: 14px;
             }
             .btn{
                 color: #fff !important;
@@ -15,7 +15,7 @@
                 text-align: center;
                 vertical-align: middle;
                 user-select: none;
-                padding: 7px .75rem;
+                padding: 9px .75rem;
                 font-size: .75rem;
                 line-height: 1.5;
                 border-radius: 4px;
@@ -45,7 +45,7 @@
             <div class="login-content" style="background: #5B1E3B !important;Margin:-10px;">
                 <br>
                 <h1>Secretaría de Administración y Finanzas <br></h1>
-                <h2><small>Dirección y Administración de Desarrollo de Personal </small></h2>
+                <h2>Dirección y Administración de Desarrollo de Personal </h2>
                 <p>
                     Bienvenido
                     @if($parte->tipo_persona_id == 1)
@@ -58,8 +58,10 @@
                     A continuación se le otorgará un enlace que lo reedireccionará a la página de nómina.
                     <br>  Click en el boton "Confirmar".
                 </p>
-                <center>
-                    <a href="{{$liga}}" class="btn"> C O N F I R M A R </a>
+                <center> 
+                   
+                    <a href="{{$liga}}" class="nounderline"> C O N F I R M A R </a>
+                   
                 </center>
                 <p>
                     <small>
