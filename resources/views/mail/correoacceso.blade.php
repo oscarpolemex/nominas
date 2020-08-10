@@ -27,7 +27,7 @@
                 margin-right: 15%;
                 color: #4e5c68;
                 font-family: 'Montserrat', sans-serif;
-                font-size: .75rem;
+                font-size: .85rem;
                 font-weight: 400;
                 line-height: 1.5;
                 text-align: center;">
@@ -46,6 +46,8 @@
                 <br>
                 <h1>Secretaría de Administración y Finanzas <br></h1>
                 <h2>Dirección y Administración de Desarrollo de Personal </h2>
+                
+               <font size= "5"
                 <p>
                     Bienvenido {{$servidor->nombre}} 
                     <br><br>
@@ -53,9 +55,18 @@
                     A continuación se le otorgará un enlace que lo reedireccionará a la página de nómina.
                     <br>  Click en el boton "Confirmar".
                 </p>
-                <center> 
+                </font>
+                
+                <style type="text/css">
+                    a.nounderline:link
+                        {
+                    text-decoration:none;
+                        }
+                    </style>
+                <center>    
+                 
+                    <a href="{{$liga}}" class="nounderline"> C O N F I R M A R  </a>
                    
-                    <a href="{{$liga}}" class="nounderline"> C O N F I R M A R </a>
                    
                 </center>
                 <p>
