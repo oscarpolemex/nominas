@@ -20,6 +20,9 @@
                 line-height: 1.5;
                 border-radius: 4px;
             }
+            a.nounderline:link{
+                text-decoration:none;
+            }
         </style>
     </head>
     <body style="margin-top: 5%;
@@ -56,13 +59,6 @@
                     <br>  Click en el boton "Confirmar".
                 </p>
                 </font>
-                
-                <style type="text/css">
-                    a.nounderline:link
-                        {
-                    text-decoration:none;
-                        }
-                    </style>
                 <center>    
                  
                     <a href="{{$liga}}" class="nounderline"> C O N F I R M A R  </a>
