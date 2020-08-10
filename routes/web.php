@@ -18,6 +18,11 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/', 'HomeController@index');
+Route::get('solicitar_token', 'SolicitudController@enviarToken')->name('solicitar');
+Route::get('solicitud', function(){
+    return view('solicitudes.solicitud');
+});
+Route::get('validar_token/{token}/{c_electronico}','SolicitudController@Recibos');
 
 Auth::routes(['register' => false]);
 
