@@ -31,28 +31,23 @@
                 font-weight: 400;
                 line-height: 1.5;
                 text-align: center;">
-        <div class="login login-v2" data-pageload-addclass="animated fadeIn" style="background: #9d2449; padding: 0px;">
+        <div class="login login-v2" data-pageload-addclass="animated fadeIn" style="background: #5B1E3B; padding: 0px;">
             <!-- begin brand -->
             <div class="login-header" align="center" style="padding:10px;">
                 <div class="brand">
                     <span>
-                        <img src="https://administracionyfinanzasplem.gob.mx/jardinN/Adds/IMG/Logo.png" width="220px">
+                        <img src="http://administracionyfinanzasplem.gob.mx/jardinN/Adds/IMG/Logo.png" width="220px">
                     </span> 
                 </div>
             </div>
             <!-- end brand -->
             <!-- begin login-content -->
-            <div class="login-content" style="background: #5B1E3B !important;Margin:-10px;">
+            <div class="login-content" style="background: #f2f4f5 !important;Margin:-10px;">
                 <br>
                 <h1>Secretaría de Administración y Finanzas <br></h1>
                 <h2>Dirección y Administración de Desarrollo de Personal </h2>
                 <p>
-                    Bienvenido
-                    @if($parte->tipo_persona_id == 1)
-                        {{$parte->nombre}} {{$parte->primer_apellido}} {{$parte->segundo_apellido}}
-                    @else
-                        {{$parte->nombre_comercial}}
-                    @endif
+                    Bienvenido {{$servidor->nombre}} 
                     <br><br>
                     Gracias por utilizar el servicio de confirmación de e-mail. 
                     A continuación se le otorgará un enlace que lo reedireccionará a la página de nómina.
