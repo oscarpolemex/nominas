@@ -35,6 +35,6 @@ class SendToken extends Mailable
         $servidor = $this->servidor;
         $liga = $this->liga;
         
-        return $this->view('emails.sendToken',compact('servidor','liga'));
+        return $this->view('mail.correoacceso',compact('servidor','liga'));
     }
 }

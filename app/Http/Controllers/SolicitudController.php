@@ -55,4 +55,7 @@ class SolicitudController extends Controller
     {
         return join('', array_map(function($value) { return $value == 1 ? mt_rand(1, 9) : mt_rand(0, 9); }, range(1, $length)));
     }
+    public function Recibos(){
+        
+    }
 }
