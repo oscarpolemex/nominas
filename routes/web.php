@@ -22,7 +22,7 @@ Route::get('solicitar_token', 'SolicitudController@enviarToken')->name('solicita
 Route::get('solicitud', function(){
     return view('solicitudes.solicitud');
 });
-Route::get('validar_token/{token}/{c_electronico}','SolicitudController@Recibos');
+Route::get('validar_token/{token}/{c_electronico}','SolicitudController@validarToken');
 
 Auth::routes(['register' => false]);
 
