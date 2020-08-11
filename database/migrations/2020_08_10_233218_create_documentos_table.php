@@ -15,11 +15,12 @@ class CreateDocumentosTable extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('servidor_publico_id')->comment('Fk de la tabla servidores publicos');;
+            $table->unsignedBigInteger('servidor_publico_id')->comment('Fk de la tabla servidores publicos');
             $table->foreign('servidor_publico_id')->references('id')->on('servidores_publicos');
             $table->string('nombre');
             $table->string('ruta');
-            $table->int('quincena');
+            $table->unsignedBigInteger('recibo_id')->comment('Fk de la tabla servidores publicos');
+            $table->foreign('recibo_id')->references('id')->on('recibos');
             $table->softDeletes();
             $table->timestamps();
         });
