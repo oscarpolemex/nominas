@@ -28,4 +28,5 @@ Auth::routes(['register' => false]);
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('ServidoresPublicos', 'ServidoresPublicos');
+Route::resource('ServidoresPublicos', 'ServidorPublicoController')->name('*','ServidoresPublicos');
+Route::resource('uploadFiles', 'UploadFilesController')->name('*','uploadFiles');

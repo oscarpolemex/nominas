@@ -6,11 +6,11 @@
                  style="background-color:#F1F1F1 !important;">
                 <img src="{{url('IMG/escuela.png')}}" class="rounded-circle align-self-start mr-3" width="45px">
                 <div>
-                    <h3 class="card-title mb-0">AGREGAR</h3>
+                    <h3 class="card-title mb-0">EDITAR</h3>
                 </div>
             </div>
             <div class="card-body">
-                {!! Form::open(['route'=>'ServidoresPublicos.store', 'method'=>'POST', 'files' => true, 'role' => 'form', 'id' => 'formServidorPublico']) !!}
+                {!! Form::model($servidorPublico,['route'=>['ServidoresPublicos.update',$servidorPublico->id], 'method'=>'PUT', 'files' => true, 'role' => 'form', 'id' => 'formServidorPublico']) !!}
                 @include('ServidoresPublicos.form')
                 {!! Form::close() !!}
             </div>

@@ -62,14 +62,6 @@
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{url('css/sidebar/style.css')}}">
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-            crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-            crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{url('css/cssformatoCentral.css')}}">
     <!-- JS, Popper.js, and jQuery -->
@@ -87,6 +79,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="{{url('IMG/LXlegis.jpg')}}"/>
     <style>
         a {
@@ -114,6 +107,10 @@
             color: #BBBBBB;
             text-decoration: none;
         }
+
+        .btn-action {
+            background-color: transparent !important;
+        }
     </style>
 </head>
 <body>
@@ -129,20 +126,16 @@
             <h5 align="center">Sistema de Nominas</h5>
             <li class="active">
             <li>
-                <a class="nav-link" style="background-color: #5B1E3B" href="insertar.php">
-                    <ion-icon name="mail-unread" style="color: #FFFFFF;"></ion-icon> &nbsp;&nbsp;Nuevo Registro</a>
+                <a class="nav-link" style="background-color: #5B1E3B" href="{{route('ServidoresPublicos.index')}}">
+                    <i class="fa fa-search"></i> &nbsp;&nbsp;Buscar Registro</a>
             </li>
             <li>
-                <a class="nav-link" style="background-color: #5B1E3B" href="buscar.php">
-                    <ion-icon name="mail-unread" style="color: #FFFFFF;"></ion-icon> &nbsp;&nbsp;Buscar Registro</a>
+                <a class="nav-link" style="background-color: #5B1E3B" href="{{route('ServidoresPublicos.create')}}">
+                    <i class="fa fa-pencil"></i> &nbsp;&nbsp;Nuevo Registro</a>
             </li>
             <li>
-                <a class="nav-link" style="background-color: #5B1E3B" href="encripta.php">
-                    <ion-icon name="mail-unread" style="color: #FFFFFF;"></ion-icon> &nbsp;&nbsp;Encriptar Pagos</a>
-            </li>
-            <li>
-                <a class="nav-link" style="background-color: #5B1E3B" href="cargarDocumentos.php">
-                    <ion-icon name="mail-unread" style="color: #FFFFFF;"></ion-icon> &nbsp;&nbsp;Cargar Documentos</a>
+                <a class="nav-link" style="background-color: #5B1E3B" href="{{route('uploadFiles.create')}}">
+                    <i class="fa fa-upload"></i> &nbsp;&nbsp;Cargar Documentos</a>
             </li>
         </ul>
     </nav>
@@ -151,13 +144,13 @@
         <nav class="navbar navbar-expand-lg" style="background-color: #682244">
             <div class="container-fluid">
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
+                    <i class="fa fa-bars"></i>
                     <span></span>
                 </button>
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-align-justify"></i>
+                    <i class="fa fa-bars"></i>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -191,8 +184,6 @@
         </div>
     </div>
 </div>
-<script src="{{ url('js/app.js') }}" type="text/javascript"></script>
-
 </body>
 <script type="text/javascript">
     $(document).ready(function () {

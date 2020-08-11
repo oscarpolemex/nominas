@@ -17,10 +17,10 @@ class CreateServidorPublicosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('curp');
-            $table->integer('cuenta');
             $table->string('c_electronico');
-            $table->string('telefono');
-            $table->string('password');
+            $table->string('telefono_celular');
+            $table->string('telefono_contacto');
+            $table->string('extension_contacto')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
