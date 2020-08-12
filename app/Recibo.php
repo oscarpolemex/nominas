@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Recibo extends Model
 {
     use SoftDeletes;
-    protected $table = "servidores_publicos";
+    protected $table = "recibos";
     protected $guarded = ['id','created_at','updated_at','deleted_at'];
     public function documentos(){
         return $this->hasMany(Documento::class);

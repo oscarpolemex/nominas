@@ -117,70 +117,88 @@
 
 <div class="wrapper">
     <!-- Sidebar  -->
-    <nav id="sidebar" style="background-color: #5B1E3B">
-        <div class="sidebar-header" style="background-color: #5B1E3B">
-            <img src="{{url('IMG/NLogo.png')}}" class="img" width="80%">
-            <br>
-        </div>
-        <ul class="list-unstyled components">
-            <h5 align="center">Sistema de Nominas</h5>
-            <li class="active">
-            <li>
-                <a class="nav-link" style="background-color: #5B1E3B" href="{{route('ServidoresPublicos.index')}}">
-                    <i class="fa fa-search"></i> &nbsp;&nbsp;Buscar Registro</a>
-            </li>
-            <li>
-                <a class="nav-link" style="background-color: #5B1E3B" href="{{route('ServidoresPublicos.create')}}">
-                    <i class="fa fa-pencil"></i> &nbsp;&nbsp;Nuevo Registro</a>
-            </li>
-            <li>
-                <a class="nav-link" style="background-color: #5B1E3B" href="{{route('uploadFiles.create')}}">
-                    <i class="fa fa-upload"></i> &nbsp;&nbsp;Cargar Documentos</a>
-            </li>
-        </ul>
-    </nav>
-    <!-- Page Content  -->
+    @if(auth()->user())
+        <nav id="sidebar" style="background-color: #5B1E3B">
+            <div class="sidebar-header" style="background-color: #5B1E3B">
+                <img src="{{url('IMG/NLogo.png')}}" class="img" width="80%">
+                <br>
+            </div>
+            <ul class="list-unstyled components">
+                <h5 align="center">Sistema de Nominas</h5>
+                <li class="active">
+                <li>
+                    <a class="nav-link" style="background-color: #5B1E3B" href="{{route('ServidoresPublicos.index')}}">
+                        <i class="fa fa-search"></i> &nbsp;&nbsp;Buscar Registro</a>
+                </li>
+                <li>
+                    <a class="nav-link" style="background-color: #5B1E3B" href="{{route('ServidoresPublicos.create')}}">
+                        <i class="fa fa-pencil"></i> &nbsp;&nbsp;Nuevo Registro</a>
+                </li>
+                <li>
+                    <a class="nav-link" style="background-color: #5B1E3B" href="{{route('uploadFiles.create')}}">
+                        <i class="fa fa-upload"></i> &nbsp;&nbsp;Cargar Documentos</a>
+                </li>
+            </ul>
+        </nav>
+@endif
+<!-- Page Content  -->
     <div id="content">
         <nav class="navbar navbar-expand-lg" style="background-color: #682244">
-            <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fa fa-bars"></i>
-                    <span></span>
-                </button>
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <ul class="navbar-nav ml-auto nav-flex-icons">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF;">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <ion-icon name="person"></ion-icon>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                                 aria-labelledby="navbarDropdownMenuLink-333" style="color: #FFFFFF;">
-                                <a class="dropdown-item" href="updatepass.php">Cambio de contraseña</a>
-                                <a class="dropdown-item" href="salir.php">Cerrar Sesión</a>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <form class="form-inline my-2 my-lg-0">
-                        <input type="text" class="form-control mr-sm-2" size="40" class="caja" id="valor"
-                               placeholder="Buscar requisicion" aria-label="Search" onkeyup="Buscar();"/>
-                    </form>
+            @if(!auth()->user())
+                <div class="sidebar-header">
+                    <img src="{{url('images/Logo.png')}}" class="img" width="40%">
+                    <br>
                 </div>
-            </div>
+            @endif
+            @if(auth()->user())
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fa fa-bars"></i>
+                        <span></span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                        <ul class="navbar-nav ml-auto nav-flex-icons">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <ion-icon name="person"></ion-icon>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                                     aria-labelledby="navbarDropdownMenuLink-333" style="color: #FFFFFF;">
+                                    <a class="dropdown-item" href="updatepass.php">Cambio de contraseña</a>
+                                    <a class="dropdown-item" href="salir.php">Cerrar Sesión</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            @endif
         </nav>    <!-- Page Content  -->
         <div class="resultados" id="resultados"></div>
         <div class="container">
             @yield('content')
+            @if(count($errors))
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">
+                        &times;
+                    </button>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
     </div>
 </div>

@@ -12,6 +12,17 @@ class ServidorPublicoController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
+    protected $request;
+
+    public function __construct(Request $request)
+    {
+        //$this->middleware('auth', ['except' => ['externo/ServidoresPublicos']]);
+        $this->request = $request;
+        if (!$this->request->is('externo/*')) {
+            $this->middleware('auth');
+        }
+    }
+
     public function index()
     {
         $servidoresPublicos = ServidorPublico::all();
@@ -40,10 +51,10 @@ class ServidorPublicoController extends Controller
             $servidorPublico = new ServidorPublico();
             $servidorPublico->nombre = $request->nombre;
             $servidorPublico->curp = strtoupper($request->curp);
-            $servidorPublico->c_electronico = $request->correo;
-            $servidorPublico->telefono_celular = $request->celular;
-            $servidorPublico->telefono_contacto = $request->telContacto;
-            $servidorPublico->extension_contacto = $request->extension;
+            $servidorPublico->c_electronico = $request->c_electronico;
+            $servidorPublico->telefono_celular = $request->telefono_celular;
+            $servidorPublico->telefono_contacto = $request->telefono_contacto;
+            $servidorPublico->extension_contacto = $request->extension_contacto;
             $servidorPublico->save();
             return redirect()->route('ServidoresPublicos.index');
         }
@@ -82,7 +93,7 @@ class ServidorPublicoController extends Controller
     public function update(Request $request, $id)
     {
         $servidorPublico = ServidorPublico::find($id);
-        if($request){
+        if ($request) {
             $servidorPublico->nombre = $request->nombre;
             $servidorPublico->curp = strtoupper($request->curp);
             $servidorPublico->c_electronico = $request->c_electronico;
