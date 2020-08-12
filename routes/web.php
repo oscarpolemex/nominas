@@ -31,4 +31,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('ServidoresPublicos', 'ServidorPublicoController')->name('*','ServidoresPublicos');
 Route::resource('uploadFiles', 'UploadFilesController')->name('*','uploadFiles');
 Route::resource('RegistrarServidorPublico', 'UploadFilesController')->name('*','RegistrarServidorPublico');
-Route::get('externo/ServidoresPublicos','ServidorPublicoController@create')->name('RegistrarServidorPublico');
+Route::get('externo/ServidoresPublicos','ServidorPublicoController@create')->name('createServidorPublico');
+Route::post('externo/ServidoresPublicos','ServidorPublicoController@store')->name('registrarServidorPublico');

@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="form-row custom-file">
-                        <input type="file" class="custom-file-input" name="file[]" multiple>
+                        <input type="file" class="custom-file-input" name="file[]" id="fileInput" multiple>
                         <label class="custom-file-label" for="customFile" data-browse="Cargar">Selecciona
                             archivo</label>
                     </div>
@@ -46,6 +46,8 @@
 @section('script')
     <script>
         var consecutivoTemp = $('#consecutivo').val();
+        $("#btnSubmitForm").attr('disabled',true);
+
         $(document).ready(function () {
             $('#tipoPago').change(function () {
                 tipoPago(consecutivoTemp);
@@ -62,6 +64,9 @@
 
                 }
             }
+            $("#fileInput").change(function(){
+                $("#btnSubmitForm").prop("disabled", this.files.length === 0);
+            });
         });
     </script>
 @endsection

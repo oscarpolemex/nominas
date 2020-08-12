@@ -14,7 +14,11 @@
                 </div>
             </div>
             <div class="card-body">
-                {!! Form::open(['route'=>'ServidoresPublicos.store', 'method'=>'POST', 'files' => true, 'role' => 'form', 'id' => 'formServidorPublico']) !!}
+                @if(auth()->user())
+                    {!! Form::open(['route'=>'ServidoresPublicos.store', 'method'=>'POST', 'files' => true, 'role' => 'form', 'id' => 'formServidorPublico']) !!}
+                @else
+                    {!! Form::open(['route'=>'registrarServidorPublico', 'method'=>'POST', 'files' => true, 'role' => 'form', 'id' => 'formServidorPublico']) !!}
+                @endif
                 @include('ServidoresPublicos.form')
                 {!! Form::close() !!}
             </div>

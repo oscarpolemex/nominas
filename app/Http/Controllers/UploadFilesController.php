@@ -59,16 +59,18 @@ class UploadFilesController extends Controller
                 $nameFile = explode("_", $req->getClientOriginalName());
                 $curp = $nameFile[0];
                 $idServidorPublico = ServidorPublico::select('id')->where('curp', '=', $curp)->get();
-                $path = $req->store($year . '/' . $request->consecutivo);
-                $documento = new Documento();
-                $documento->servidor_publico_id = $idServidorPublico[0]->id;
-                $documento->nombre = $req->getClientOriginalName();
-                $documento->ruta = $path;
-                $documento->recibo_id = $recibo->id;
-                $documento->save();
-                DB::commit();
+                if (count($idServidorPublico)) {
+                    $path = $req->store($year . '/' . $request->consecutivo);
+                    $documento = new Documento();
+                    $documento->servidor_publico_id = $idServidorPublico[0]->id;
+                    $documento->nombre = $req->getClientOriginalName();
+                    $documento->ruta = $path;
+                    $documento->recibo_id = $recibo->id;
+                    $documento->save();
+                    DB::commit();
+                }
             }
-            return redirect()->route('uploadFiles.create');
+            return redirect()->route('uploadFiles.create')->with('info', '¡Se han cargado exitosamente los documentos!');
         } catch (\Exception $exception) {
             if ($exception) {
                 DB::rollBack();

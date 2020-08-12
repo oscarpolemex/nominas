@@ -16,7 +16,6 @@ class ServidorPublicoController extends Controller
 
     public function __construct(Request $request)
     {
-        //$this->middleware('auth', ['except' => ['externo/ServidoresPublicos']]);
         $this->request = $request;
         if (!$this->request->is('externo/*')) {
             $this->middleware('auth');
@@ -56,7 +55,11 @@ class ServidorPublicoController extends Controller
             $servidorPublico->telefono_contacto = $request->telefono_contacto;
             $servidorPublico->extension_contacto = $request->extension_contacto;
             $servidorPublico->save();
-            return redirect()->route('ServidoresPublicos.index')->with('info', 'El empleado fue eliminado');
+            if (auth()->user()) {
+                return redirect()->route('ServidoresPublicos.index')->with('info', '¡Se ha registrado el servidor público!');
+            } else {
+                return redirect()->back()->with('info', '¡Se ha registrado el servidor público!');
+            }
         }
     }
 
@@ -101,7 +104,7 @@ class ServidorPublicoController extends Controller
             $servidorPublico->telefono_contacto = $request->telefono_contacto;
             $servidorPublico->extension_contacto = $request->extension_contacto;
             $servidorPublico->save();
-            return redirect()->route('ServidoresPublicos.index');
+            return redirect()->route('ServidoresPublicos.index')->with('info', '¡Se ha actualizado la información del servidor público!');
         }
     }
 
