@@ -56,7 +56,7 @@ class ServidorPublicoController extends Controller
             $servidorPublico->telefono_contacto = $request->telefono_contacto;
             $servidorPublico->extension_contacto = $request->extension_contacto;
             $servidorPublico->save();
-            return redirect()->route('ServidoresPublicos.index');
+            return redirect()->route('ServidoresPublicos.index')->with('info', 'El empleado fue eliminado');
         }
     }
 
