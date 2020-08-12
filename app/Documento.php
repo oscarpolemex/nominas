@@ -14,7 +14,7 @@ class Documento extends Model
     public function servidor_publico(){
         return $this->belongsTo(Documento::class);
     }
-    public function recibo(){
+    public function recibos(){
         return $this->belongsTo(Documento::class);
     }
 }

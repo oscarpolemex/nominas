@@ -1,0 +1,14 @@
+{
+    "elements": {},
+    "attributes": {
+        "site": {
+            "context": "div"
+        },
+        "left": {
+            "context": "img"
+        },
+        "right": {
+            "context": "img"
+        }
+    }
+}

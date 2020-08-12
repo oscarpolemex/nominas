@@ -1,40 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+@extends('layouts.app')
+@section('content')
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>SISTEMA DE NOMINA</title>
-    <style type="text/css">
-        a:link {
-            font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 15px;
-            text-align: right;
-            text-decoration: none;
-            text-align: right;
-            color: #6d6d6d;
-            padding: 5px;
-        }
+<div class="container mt-2">
+        <div class="card">
+            <div class="card-header bg-info  border-0 py-3 d-flex align-items-center"
+                 style="background-color:#F1F1F1 !important;">
+                <div>
+                    <h3 class="card-title mb-0">ARCHIVOS</h3>
+                </div>
+            </div>
+            <div class="card-body">
+              @if($servidor->recibos)
+              
+                <table class="table">
+    <thead>
+    <tr>
+      <th scope="col"> Tipo de Recibo </th>
+      <th scope="col"> Número de Recibo </th>
+      <th scope="col"> Fecha </th>
+      <th scope="col"> Documento </th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach($servidor->recibos as $item)
+          <tr> 
+             <td>{{$item->tipoRecibo->nombre}}</td>
+             <td>{{$item->consecutivo}}</td>
+             <td>{{$item->created_at}}</td>
+             <td>{{$item->documentos->nombre}}</td>
+             <td>{{$item->documentos->nombre}}</td>
+             <td><button class="btn btn sm fa fa-search"></button></td>
+        @endforeach
+    </tbody>
+</table>
+              @else
+                <h1>No hay documentos</h1>
+              @endif
+            </div>
+        </div>
+    </div>
 
-        /* Link no visitado*/
-        a:visited {
-            ext-decoration: none;
-            color: #6d6d6d
-        }
-
-        /*Link visitado*/
-    </style>
-    <link rel="stylesheet" type="text/css" href="{{url('css/style1.css')}}"/>
-</head>
-<body>
-<div class="login-page">
-</div>
-
-
-<footer> Plaza Hidalgo s/n, Colonia Centro, Toluca, Estado de M&eacute;xico. C.P. 5000<br/>
-    Conmutador: 01(722) 279.64.00 y 279.65.00<br/>
-</footer>
-
-
-</body>
-</html>
+@endsection

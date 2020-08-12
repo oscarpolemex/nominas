@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\ServidorPublico;
+use App\Recibo;
 use App\Mail\SendToken;
 
 class SolicitudController extends Controller
@@ -38,7 +39,8 @@ class SolicitudController extends Controller
             if (Cache::has($this->request->token)){
                 $servidor = Cache::get($this->request->token);
                 if($servidor->c_electronico == $this->request->c_electronico){
-                    return view('solicitudes.recibos');
+//                    $recibos = Recibo::find($servidor->id);
+                    return view('solicitudes.recibos', compact('servidor'));
                 }else{
                     return view('solicitudes.solicitud')->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);
                 }
@@ -49,7 +51,6 @@ class SolicitudController extends Controller
             return view('solicitudes.solicitud')->withErrors(["c_electronico" => "No existe el token, por favor solicita otro"]);
             
         }
-        dd($this->request->token);
     }
     private function random_number($length)
     {
