@@ -65,9 +65,7 @@
     <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{url('css/cssformatoCentral.css')}}">
     <!-- JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             crossorigin="anonymous"></script>
@@ -163,20 +161,27 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                         <ul class="navbar-nav ml-auto nav-flex-icons">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333"
                                    data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF;">
+                                   aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF; cursor: default">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <ion-icon name="person"></ion-icon>
+                                    <i class="icon fa fa-user"></i>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                                     aria-labelledby="navbarDropdownMenuLink-333" style="color: #FFFFFF;">
-                                    <a class="dropdown-item" href="updatepass.php">Cambio de contraseña</a>
-                                    <a class="dropdown-item" href="salir.php">Cerrar Sesión</a>
+                                     aria-labelledby="navbarDropdownMenuLink-333"
+                                     style="color: #FFFFFF;">
+                                    <!--<a class="dropdown-item" href="updatepass.php">Cambio de contraseña</a>-->
+                                    <a class="dropdown-item" style="cursor: pointer"
+                                       onclick="$('#formLogout').submit();">
+                                        <i class="icon fa fa-power-off text-dark"></i>
+                                        <i class="text-dark">Cerrar Sesión</i>
+                                    </a>
+                                    <form method="POST" id="formLogout" hidden action="{{route('logout')}}">
+                                        {{csrf_field()}}
+                                    </form>
                                 </div>
                             </li>
                         </ul>

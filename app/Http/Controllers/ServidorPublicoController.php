@@ -103,6 +103,7 @@ class ServidorPublicoController extends Controller
             $servidorPublico->telefono_celular = $request->telefono_celular;
             $servidorPublico->telefono_contacto = $request->telefono_contacto;
             $servidorPublico->extension_contacto = $request->extension_contacto;
+            $servidorPublico->verificado = $request->verificado;
             $servidorPublico->save();
             return redirect()->route('ServidoresPublicos.index')->with('info', '¡Se ha actualizado la información del servidor público!');
         }
@@ -117,5 +118,25 @@ class ServidorPublicoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function validaEmail($crit)
+    {
+        $exist = ServidorPublico::where('c_electronico', '=', $crit)->get();
+        if (count($exist)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    public function validaCurp($crit)
+    {
+        $exist = ServidorPublico::where('curp', '=', $crit)->get();
+        if (count($exist)) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

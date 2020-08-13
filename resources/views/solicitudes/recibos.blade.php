@@ -29,7 +29,7 @@
                                 <td>{{$item->created_at}}</td>
                                 <td>{{$item->nombre}}</td>
                                 <td>
-                                    <button class="btn btn sm fa fa-search"></button>
+                                    <button class="btn btn-success sm fa fa-download" onclick="{{route('downloadFile')}}"></button>
                                 </td>
                         @endforeach
                         </tbody>

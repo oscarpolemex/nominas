@@ -66,7 +66,7 @@ class SolicitudController extends Controller
         }, range(1, $length)));
     }
 
-    public function Recibos()
+    public function Recibos($crit)
     {
 
     }

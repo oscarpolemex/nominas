@@ -36,9 +36,20 @@
                 correoValidate();
                 celularValidate();
                 telContactoValidate();
+                validaCorreo();
+                validaCurp();
                 if (nombreValidate() === true && curpValidate() === true && correoValidate() === true
-                    && celularValidate() === true && telContactoValidate() === true) {
+                    && celularValidate() === true && telContactoValidate() === true
+                    && validaCorreo() === true && validaCurp() === true) {
                     $('#formServidorPublico').submit();
+                } else {
+                    console.log(nombreValidate(),
+                        curpValidate(),
+                        correoValidate(),
+                        celularValidate(),
+                        telContactoValidate(),
+                        validaCorreo(),
+                        validaCurp());
                 }
             });
 
@@ -132,6 +143,45 @@
                     $("#telContacto").parent().children("span").text("").hide();
                     return true;
                 }
+            }
+
+            function validaCorreo() {
+                let correo = $('#correo').val();
+                $.ajax({
+                    url: '{{asset("/validaEmail")}}/' + correo,
+                    type: 'GET',
+                    success: function (json) {
+                        if (json === 1 || json === '1') {
+                            $("#correo").children().attr("class", "text-danger");
+                            $("#correo").parent().children("span").text("¡El correo ya existe!").show();
+                            return false;
+                        } else {
+                            $("#correo").children().attr("class", "has-success ");
+                            $("#correo").parent().children("span").text("").hide();
+                            return true;
+                        }
+                    }
+                });
+            }
+
+            function validaCurp() {
+                let curp = $('#curp').val();
+                let bool;
+                $.ajax({
+                    url: '{{asset("/validaCurp")}}/' + curp,
+                    type: 'GET',
+                    success: function (json) {
+                        if (json === 1 || json === '1') {
+                            $("#curp").children().attr("class", "text-danger");
+                            $("#curp").parent().children("span").text("¡La curp ya existe!").show();
+                            bool = false;
+                        } else {
+                            $("#curp").children().attr("class", "has-success ");
+                            $("#curp").parent().children("span").text("").hide();
+                            bool return true;
+                        }
+                    }
+                });
             }
         });
     </script>

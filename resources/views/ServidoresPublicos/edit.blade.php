@@ -1,4 +1,12 @@
 @extends('layouts.app')
+@section('validar')
+    @if($servidorPublico)
+        <div class="">
+            {!! Form::checkbox('validado', 'value', $servidorPublico->verificado, ['class' =>'form-check-input']) !!}
+            {!! Form::label('validado', 'Extensión:', ['class' => 'form-check-label']) !!}
+        </div>
+    @endif
+@endsection
 @section('content')
     <div class="container mt-2">
         <div class="card">

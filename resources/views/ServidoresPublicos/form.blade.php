@@ -32,8 +32,12 @@
         <span class="text-danger" style="font-size:150%"></span>
     </div>
 </div>
+@yield('validar')
 <div class="form-row text-center">
-    <div class="col-12">
-        {{ Form::button('<i>Enviar</i>', ['type' => 'submit', 'class' => 'btn btn-primary', 'id' => 'btnSubmitForm'] )  }}
+    <div class="col-md-12">
+        <div class="">
+            {{ Form::button('<i>Enviar</i>', ['type' => 'submit', 'class' => 'btn btn-primary', 'id' => 'btnSubmitForm'] )  }}
+        </div>
     </div>
 </div>
+\

@@ -21,6 +21,7 @@ class CreateServidorPublicosTable extends Migration
             $table->string('telefono_celular');
             $table->string('telefono_contacto');
             $table->string('extension_contacto')->nullable();
+            $table->boolean('verificado')->default(0)->change();
             $table->timestamps();
             $table->softDeletes();
         });

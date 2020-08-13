@@ -33,3 +33,6 @@ Route::resource('uploadFiles', 'UploadFilesController')->name('*','uploadFiles')
 Route::resource('RegistrarServidorPublico', 'UploadFilesController')->name('*','RegistrarServidorPublico');
 Route::get('externo/ServidoresPublicos','ServidorPublicoController@create')->name('createServidorPublico');
 Route::post('externo/ServidoresPublicos','ServidorPublicoController@store')->name('registrarServidorPublico');
+Route::get('downloadFile/', 'SolicitudController@Recibos')->name('downloadFile');
+Route::get('validaEmail/{crit}','ServidorPublicoController@validaEmail')->name('validaEmail');
+Route::get('validaCurp/{crit}','ServidorPublicoController@validaCurp')->name('validaCurp');
