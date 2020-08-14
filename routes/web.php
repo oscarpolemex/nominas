@@ -36,3 +36,5 @@ Route::post('externo/ServidoresPublicos','ServidorPublicoController@store')->nam
 Route::get('downloadFile/', 'SolicitudController@Recibos')->name('downloadFile');
 Route::get('validaEmail/{crit}','ServidorPublicoController@validaEmail')->name('validaEmail');
 Route::get('validaCurp/{crit}','ServidorPublicoController@validaCurp')->name('validaCurp');
+Route::get('getRecibos/{id}','DocumentosController@getRecibos')->name('getRecibos');
+Route::get('getServidores','ServidorPublicoController@getServidores')->name('getServidores');
