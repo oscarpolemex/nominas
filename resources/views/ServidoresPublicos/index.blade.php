@@ -14,27 +14,61 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table" style="font-size:150%">
-                    <tr>
-                        <th>CURP</th>
-                        <th>Nombre</th>
-                        <th>Nombre</th>
-                        <th>Acciones</th>
-                    </tr>
-                    @foreach($servidoresPublicos as $item)
+                <table class="table" style="font-size:150%" id='tableServidores'>
+                    <thead>
                         <tr>
-                            <td>{{$item->curp}}</td>
-                            <td>{{$item->nombre}}</td>
-                            <td>{{$item->c_electronico}}</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm" onclick="location.href='{{route('ServidoresPublicos.edit',$item->id)}}'"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-success btn-sm"><i class="fa fa-file"></i></button>
-                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                            </td>
+                            <th class='id'>Id</th>
+                            <th>CURP</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Validado</th>
+                            <th>Acciones</th>
                         </tr>
-                    @endforeach
+                    </thead>
+                    <tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $('#tableServidores').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{route('getServidores')}}",
+            columns: [
+                {data: 'id'},
+                {data: 'curp'},
+                {data: 'nombre'},
+                {data: 'c_electronico'},
+                {data: 'verificado'}
+            ],
+            "columnDefs": [
+                {
+                    "targets": [4],
+                    "render": function (data, type, row) {
+                        if(row.verificado == 0){
+                            return "No";
+                        }else{
+                            return "Si";
+                        }
+                    },
+                    "targets": [5],
+                    "render": function (data, type, row) {
+                        var ruta = 'ServidoresPublicos/'+row.id+'/edit';
+                        html ='<div style="display: inline-block;">';
+                        html +='    <a href="'+ruta+'" class="btn btn-primary" style="border-color: #5b1e3b;background-color: #5b1e3b;">';
+                        html +='        <i class="fa fa-pencil-alt"></i>Editar';
+                        html +='    </a>';
+                        html +='</div>'
+                        return html;;
+                    }
+                }
+            ]
+        });
+    });
+</script>
 @endsection
