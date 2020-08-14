@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ServidorPublico;
+use Yajra\Datatables\Datatables;
 
 class ServidorPublicoController extends Controller
 {
@@ -26,6 +27,10 @@ class ServidorPublicoController extends Controller
     {
         $servidoresPublicos = ServidorPublico::all();
         return view('ServidoresPublicos.index', compact('servidoresPublicos'));
+    }
+    public function getServidores(){
+        $servidoresPublicos = ServidorPublico::select(['id','nombre','curp','c_electronico','verificado']);
+        return Datatables::of($servidoresPublicos)->make();
     }
 
     /**
