@@ -12,8 +12,13 @@
         <div class="card">
             <div class="card-header bg-info  border-0 py-3 d-flex align-items-center"
                  style="background-color:#F1F1F1 !important;">
-                <div>
+                <div class='col-md-10'>
                     <h3 class="card-title mb-0">EDITAR</h3>
+                </div>
+                <div class="1">
+                    <button class="btn btn-primary" onclick="location.href='{{route('ServidoresPublicos.index')}}'">
+                        <i class="fa fa-arrow-left"></i>Regresar
+                    </button>
                 </div>
             </div>
             <div class="card-body">
