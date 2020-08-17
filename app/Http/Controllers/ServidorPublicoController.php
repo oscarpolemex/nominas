@@ -116,7 +116,11 @@ class ServidorPublicoController extends Controller
             $servidorPublico->telefono_celular = $request->telefono_celular;
             $servidorPublico->telefono_contacto = $request->telefono_contacto;
             $servidorPublico->extension_contacto = $request->extension_contacto;
-            $servidorPublico->verificado = true;
+            if ($request->verificado != null) {
+                $servidorPublico->verificado = true;
+            } else {
+                $servidorPublico->verificado = false;
+            }
             $servidorPublico->save();
             return redirect()->route('ServidoresPublicos.index')->with('info', '¡Se ha actualizado la información del servidor público!');
         }
