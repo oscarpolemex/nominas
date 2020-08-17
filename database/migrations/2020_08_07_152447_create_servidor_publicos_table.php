@@ -15,13 +15,14 @@ class CreateServidorPublicosTable extends Migration
     {
         Schema::create('servidores_publicos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre');
+            $table->string('nombre')->nullable();
             $table->string('curp');
-            $table->string('c_electronico');
-            $table->string('telefono_celular');
-            $table->string('telefono_contacto');
+            $table->string('c_electronico')->nullable();
+            $table->string('telefono_celular')->nullable();
+            $table->string('telefono_contacto')->nullable();
             $table->string('extension_contacto')->nullable();
-            $table->boolean('verificado')->default(0)->change();
+            $table->boolean('verificado')->default(false);
+            $table->boolean('registrado')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

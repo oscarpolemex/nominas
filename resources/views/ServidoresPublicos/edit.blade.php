@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @section('validar')
-    @if($servidorPublico)
-        <div class="">
-            {!! Form::checkbox('validado', 'value', $servidorPublico->verificado, ['class' =>'form-check-input']) !!}
-            {!! Form::label('validado', 'Extensión:', ['class' => 'form-check-label']) !!}
+    @if($servidorPublico->verificado == false)
+        <div class="col">
+            <button class="btn btn-danger" id="confirmDescartar"><i>Descartar</i></button>
         </div>
     @endif
 @endsection
@@ -28,6 +27,8 @@
 @section('script')
     <script>
         $(document).ready(function () {
+            let correoE = "{{$servidorPublico->c_electronico}}";
+            let curpE = "{{$servidorPublico->curp}}";
             $('#btnSubmitForm').click(function (event) {
                 event.preventDefault();
                 nombreValidate();
@@ -132,6 +133,76 @@
                     return true;
                 }
             }
+
+            $('#correo').blur(function correo() {
+                let correo = $('#correo').val();
+                if (correoE !== correo) {
+                    if (correo.length) {
+                        $.ajax({
+                            url: '{{asset("/validaEmail")}}/' + correo,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function (json) {
+                                if (json === 1) {
+                                    $("#correo").children().attr("class", "text-danger");
+                                    $("#correo").parent().children("span").text("¡El correo ya existe!").show();
+                                    $("#correo").val('');
+                                } else {
+                                    $("#correo").children().attr("class", "has-success ");
+                                    $("#correo").parent().children("span").text("").hide();
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    $("#correo").children().attr("class", "has-success ");
+                    $("#correo").parent().children("span").text("").hide();
+                }
+            });
+            $('#curp').blur(function curp() {
+                let curp = $('#curp').val();
+
+                if (curpE !== curp) {
+                    if (curp.length) {
+                        $.ajax({
+                            url: '{{asset("/validaCurp")}}/' + curp,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function (json) {
+                                if (json === 1) {
+                                    $("#curp").children().attr("class", "text-danger");
+                                    $("#curp").parent().children("span").text("¡La curp ya existe!").show();
+                                    $("#curp").val('');
+                                } else {
+                                    $("#curp").children().attr("class", "has-success ");
+                                    $("#curp").parent().children("span").text("").hide();
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    $("#curp").children().attr("class", "has-success ");
+                    $("#curp").parent().children("span").text("").hide();
+                }
+            });
+            $('#confirmDescartar').click(function (event) {
+                event.preventDefault();
+                var id = {{$servidorPublico->id}}
+                var confirmacion = confirm("¿Deseas descartar el registro?");
+                if (confirmacion) {
+                    $.ajax({
+                        url: '{{asset("/ServidoresPublicos")}}/' + id,
+                        type: 'DELETE',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                        },
+                        success: function () {
+                            window.location.href = '{{route("ServidoresPublicos.index")}}';
+                        },
+                    });
+
+                }
+            });
         });
     </script>
 @endsection

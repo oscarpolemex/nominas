@@ -29,6 +29,8 @@
 @section('script')
     <script>
         $(document).ready(function () {
+            let valCorreo = false;
+            let valCurp = false;
             $('#btnSubmitForm').click(function (event) {
                 event.preventDefault();
                 nombreValidate();
@@ -36,20 +38,9 @@
                 correoValidate();
                 celularValidate();
                 telContactoValidate();
-                validaCorreo();
-                validaCurp();
                 if (nombreValidate() === true && curpValidate() === true && correoValidate() === true
-                    && celularValidate() === true && telContactoValidate() === true
-                    && validaCorreo() === true && validaCurp() === true) {
+                    && celularValidate() === true && telContactoValidate() === true) {
                     $('#formServidorPublico').submit();
-                } else {
-                    console.log(nombreValidate(),
-                        curpValidate(),
-                        correoValidate(),
-                        celularValidate(),
-                        telContactoValidate(),
-                        validaCorreo(),
-                        validaCurp());
                 }
             });
 
@@ -145,44 +136,46 @@
                 }
             }
 
-            function validaCorreo() {
+            $('#correo').blur(function correo() {
                 let correo = $('#correo').val();
-                $.ajax({
-                    url: '{{asset("/validaEmail")}}/' + correo,
-                    type: 'GET',
-                    success: function (json) {
-                        if (json === 1 || json === '1') {
-                            $("#correo").children().attr("class", "text-danger");
-                            $("#correo").parent().children("span").text("¡El correo ya existe!").show();
-                            return false;
-                        } else {
-                            $("#correo").children().attr("class", "has-success ");
-                            $("#correo").parent().children("span").text("").hide();
-                            return true;
+                if (correo.length) {
+                    $.ajax({
+                        url: '{{asset("/validaEmail")}}/' + correo,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (json) {
+                            if (json === 1) {
+                                $("#correo").children().attr("class", "text-danger");
+                                $("#correo").parent().children("span").text("¡El correo ya existe!").show();
+                                $("#correo").val('');
+                            } else {
+                                $("#correo").children().attr("class", "has-success ");
+                                $("#correo").parent().children("span").text("").hide();
+                            }
                         }
-                    }
-                });
-            }
-
-            function validaCurp() {
+                    });
+                }
+            });
+            $('#curp').blur(function curp() {
                 let curp = $('#curp').val();
-                let bool;
-                $.ajax({
-                    url: '{{asset("/validaCurp")}}/' + curp,
-                    type: 'GET',
-                    success: function (json) {
-                        if (json === 1 || json === '1') {
-                            $("#curp").children().attr("class", "text-danger");
-                            $("#curp").parent().children("span").text("¡La curp ya existe!").show();
-                            bool = false;
-                        } else {
-                            $("#curp").children().attr("class", "has-success ");
-                            $("#curp").parent().children("span").text("").hide();
-                            bool return true;
+                if (curp.length) {
+                    $.ajax({
+                        url: '{{asset("/validaCurp")}}/' + curp,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (json) {
+                            if (json === 1) {
+                                $("#curp").children().attr("class", "text-danger");
+                                $("#curp").parent().children("span").text("¡La curp ya existe!").show();
+                                $("#curp").val('');
+                            } else {
+                                $("#curp").children().attr("class", "has-success ");
+                                $("#curp").parent().children("span").text("").hide();
+                            }
                         }
-                    }
-                });
-            }
+                    });
+                }
+            });
         });
     </script>
 @endsection

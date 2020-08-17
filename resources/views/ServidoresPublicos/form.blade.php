@@ -22,7 +22,7 @@
         <span class="text-danger" style="font-size:150%"></span>
     </div>
     <div class="form-group col-md-4">
-        {!! Form::label('telefono_contacto', 'Telefono de contacto:') !!}
+        {!! Form::label('telefono_contacto', 'Telefono de oficina:') !!}
         {!! Form::text('telefono_contacto',null,['class'=>'form-control', 'placeholder'=>'',  'id' => 'telContacto']) !!}
         <span class="text-danger" style="font-size:150%"></span>
     </div>
@@ -32,12 +32,10 @@
         <span class="text-danger" style="font-size:150%"></span>
     </div>
 </div>
-@yield('validar')
 <div class="form-row text-center">
-    <div class="col-md-12">
-        <div class="">
-            {{ Form::button('<i>Enviar</i>', ['type' => 'submit', 'class' => 'btn btn-primary', 'id' => 'btnSubmitForm'] )  }}
-        </div>
+    @yield('validar')
+    <div class="col">
+        {{ Form::button('<i>Guardar</i>', ['type' => 'submit', 'class' => 'btn btn-primary', 'id' => 'btnSubmitForm'] )  }}
     </div>
 </div>
-\
+

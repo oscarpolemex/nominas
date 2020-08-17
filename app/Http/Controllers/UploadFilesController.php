@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Storage;
 
 class UploadFilesController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,14 +34,7 @@ class UploadFilesController extends Controller
      */
     public function create()
     {
-        $tipoRecibo = TipoRecibo::select('id', 'nombre')->get();
-        $ultimoRecibo = Recibo::select('consecutivo')->where('tipo_recibo_id', '=', 1)
-            ->orderBy('created_at', 'DESC')->take(1)->get();
-        $numeroRecibo = 1;
-        if (count($ultimoRecibo)) {
-            $numeroRecibo = $ultimoRecibo[0]->consecutivo + 1;
-        }
-        return view('uploadFiles.create', compact('tipoRecibo', 'numeroRecibo'));
+        return view('uploadFiles.create');
     }
 
     /**
@@ -49,33 +47,53 @@ class UploadFilesController extends Controller
     {
         DB::beginTransaction();
         try {
-            $year = date('yy');
-            $recibo = new Recibo();
-            $recibo->tipo_recibo_id = $request->tipo_pago;
-            $recibo->anio = $year;
-            $recibo->consecutivo = $request->consecutivo;
-            $recibo->save();
+            $files = [];
             foreach ($request->file as $req) {
                 $nameFile = explode("_", $req->getClientOriginalName());
-                $curp = $nameFile[0];
-                $idServidorPublico = ServidorPublico::select('id')->where('curp', '=', $curp)->get();
-                if (count($idServidorPublico)) {
-                    $path = $req->store($year . '/' . $request->consecutivo);
-                    $documento = new Documento();
-                    $documento->servidor_publico_id = $idServidorPublico[0]->id;
-                    $documento->nombre = $req->getClientOriginalName();
-                    $documento->ruta = $path;
-                    $documento->recibo_id = $recibo->id;
-                    $documento->save();
-                    DB::commit();
+                $ext = explode(".", $nameFile[2]);
+                $recibo = Recibo::where([
+                    'anio' => $nameFile[1],
+                    'consecutivo' => $ext[0]
+                ])->take(1)->get();
+                $tipoRecibo = null;
+                $tipo = substr($ext[0], 0, 1);
+                if ($tipo == 'Q') {
+                    $tipoRecibo = 1;
+                } else {
+                    $tipoRecibo = 2;
                 }
+                if (!count($recibo)) {
+                    $recibo = new Recibo();
+                    $recibo->tipo_recibo_id = $tipoRecibo;
+                    $recibo->anio = $nameFile[1];
+                    $recibo->consecutivo = $ext[0];
+                    $recibo->save();
+                }
+                $idServidorPublico = ServidorPublico::select('id')->where('curp', '=', $nameFile[0])->get();
+                $path = $req->store($nameFile[1] . '/' . $ext[0]);
+                $documento = new Documento();
+                if (count($idServidorPublico)) {
+                    $documento->servidor_publico_id = $idServidorPublico[0]->id;
+
+                } else {
+                    $servidorPublico = new ServidorPublico();
+                    $servidorPublico->curp = $nameFile[0];
+                    $servidorPublico->save();
+                    $documento->servidor_publico_id = $servidorPublico->id;
+                }
+                $documento->nombre = $req->getClientOriginalName();
+                $documento->ruta = $path;
+                $documento->recibo_id = $recibo->id;
+                $documento->save();
+                array_push($files, $path);
             }
+            DB::commit();
             return redirect()->route('uploadFiles.create')->with('info', '¡Se han cargado exitosamente los documentos!');
         } catch (\Exception $exception) {
             if ($exception) {
                 DB::rollBack();
-                Storage::deleteDirectory($year . '/' . $request->consecutivo);
-                return redirect()->back();
+                Storage::delete($files);
+                return $exception;
             }
         }
 
