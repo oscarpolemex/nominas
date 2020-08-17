@@ -4,6 +4,9 @@
         <div class="col">
             <button class="btn btn-danger" id="confirmDescartar"><i>Descartar</i></button>
         </div>
+        <div class="col">
+            <button class="btn btn-success" id="validar"><i>Validar</i></button>
+        </div>
     @endif
 @endsection
 @section('content')
@@ -205,7 +208,20 @@
                             window.location.href = '{{route("ServidoresPublicos.index")}}';
                         },
                     });
-
+                }
+            });
+            $('#validar').click(function (event) {
+                event.preventDefault();
+                var id = {{$servidorPublico->id}}
+                var confirmacion = confirm("¿Deseas validar el registro?");
+                if (confirmacion) {
+                    $.ajax({
+                        url: '{{asset("/validarServidorPublico")}}/' + id,
+                        type: 'GET',
+                        success: function () {
+                            window.location.href = '{{route("ServidoresPublicos.index")}}';
+                        },
+                    });
                 }
             });
         });

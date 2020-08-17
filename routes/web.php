@@ -19,22 +19,23 @@ Route::get('/login', function () {
 
 Route::get('/', 'HomeController@index');
 Route::get('solicitar_token', 'SolicitudController@enviarToken')->name('solicitar');
-Route::get('solicitud', function(){
+Route::get('solicitud', function () {
     return view('solicitudes.solicitud');
 });
-Route::get('validar_token/{token}/{c_electronico}','SolicitudController@validarToken');
+Route::get('validar_token/{token}/{c_electronico}', 'SolicitudController@validarToken');
 
 Auth::routes(['register' => false]);
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('ServidoresPublicos', 'ServidorPublicoController')->name('*','ServidoresPublicos');
-Route::resource('uploadFiles', 'UploadFilesController')->name('*','uploadFiles');
-Route::resource('RegistrarServidorPublico', 'UploadFilesController')->name('*','RegistrarServidorPublico');
-Route::get('externo/ServidoresPublicos','ServidorPublicoController@create')->name('createServidorPublico');
-Route::post('externo/ServidoresPublicos','ServidorPublicoController@store')->name('registrarServidorPublico');
+Route::resource('ServidoresPublicos', 'ServidorPublicoController')->name('*', 'ServidoresPublicos');
+Route::resource('uploadFiles', 'UploadFilesController')->name('*', 'uploadFiles');
+Route::resource('RegistrarServidorPublico', 'UploadFilesController')->name('*', 'RegistrarServidorPublico');
+Route::get('externo/ServidoresPublicos', 'ServidorPublicoController@create')->name('createServidorPublico');
+Route::post('externo/ServidoresPublicos', 'ServidorPublicoController@store')->name('registrarServidorPublico');
 Route::get('downloadFile/', 'SolicitudController@Recibos')->name('downloadFile');
-Route::get('validaEmail/{crit}','ServidorPublicoController@validaEmail')->name('validaEmail');
-Route::get('validaCurp/{crit}','ServidorPublicoController@validaCurp')->name('validaCurp');
-Route::get('getRecibos/{id}','DocumentosController@getRecibos')->name('getRecibos');
-Route::get('getServidores','ServidorPublicoController@getServidores')->name('getServidores');
+Route::get('validaEmail/{crit}', 'ServidorPublicoController@validaEmail')->name('validaEmail');
+Route::get('validaCurp/{crit}', 'ServidorPublicoController@validaCurp')->name('validaCurp');
+Route::get('getRecibos/{id}', 'DocumentosController@getRecibos')->name('getRecibos');
+Route::get('getServidores', 'ServidorPublicoController@getServidores')->name('getServidores');
+Route::get('validarServidorPublico/{id}', 'ServidorPublicoController@validarRegistro');

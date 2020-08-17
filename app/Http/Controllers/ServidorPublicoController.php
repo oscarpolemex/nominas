@@ -28,8 +28,10 @@ class ServidorPublicoController extends Controller
         $servidoresPublicos = ServidorPublico::all();
         return view('ServidoresPublicos.index', compact('servidoresPublicos'));
     }
-    public function getServidores(){
-        $servidoresPublicos = ServidorPublico::select(['id','nombre','curp','c_electronico','verificado']);
+
+    public function getServidores()
+    {
+        $servidoresPublicos = ServidorPublico::select(['id', 'nombre', 'curp', 'c_electronico', 'verificado']);
         return Datatables::of($servidoresPublicos)->make();
     }
 
@@ -64,9 +66,6 @@ class ServidorPublicoController extends Controller
             $servidorPublico->telefono_contacto = $request->telefono_contacto;
             $servidorPublico->extension_contacto = $request->extension_contacto;
             $servidorPublico->registrado = true;
-            if (auth()->user()) {
-                $servidorPublico->verificado = true;
-            }
             $servidorPublico->save();
             if (auth()->user()) {
                 return redirect()->route('ServidoresPublicos.index')->with('info', '¡Se ha registrado el servidor público!');
@@ -157,5 +156,13 @@ class ServidorPublicoController extends Controller
         } else {
             return 2;
         }
+    }
+
+    public function validarRegistro($id)
+    {
+        $servidorPublico = ServidorPublico::find($id);
+        $servidorPublico->verificado = true;
+        $servidorPublico->save();
+        return 'success';
     }
 }
