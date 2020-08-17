@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Documento;
 use Illuminate\Http\Request;
+use App\ServidorPublico;
+use Yajra\Datatables\Datatables;
+
 
 class DocumentoController extends Controller
 {
+    protected $request;
+    function __construct(Request $request) {
+        $this->request = $request;
+    }
+    
     /**
      * Display a listing of the resource.
      *
