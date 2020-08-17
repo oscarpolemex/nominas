@@ -26,7 +26,7 @@
 
     </div>
 @endsection
-@section('script')
+@section('scripts')
     <script>
         $(document).ready(function () {
             let valCorreo = false;

@@ -55,7 +55,9 @@
                         }else{
                             return "Si";
                         }
-                    },
+                    }
+                },
+                {
                     "targets": [5],
                     "render": function (data, type, row) {
                         var ruta = 'ServidoresPublicos/'+row.id+'/edit';
