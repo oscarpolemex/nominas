@@ -45,7 +45,7 @@ class SolicitudController extends Controller
             if (Cache::has($this->request->token)) {
                 $servidor = Cache::get($this->request->token);
                 if ($servidor->c_electronico == $this->request->c_electronico) {
-                    $servidor->documentos = $servidor->documentos->sortByDesc(true);
+                    $servidor->documentos = $servidor->documentos->sortByDesc(true)->take(12);
                     return view('solicitudes.recibos', compact('servidor'));
                 } else {
                     return view('solicitudes.solicitud')->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);

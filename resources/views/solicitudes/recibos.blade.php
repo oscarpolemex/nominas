@@ -12,7 +12,7 @@
             <div class="card-body">
                 @if($servidor->documentos)
 
-                    <table class="table">
+                    <table class="table" id='tableRecibos'>
                         <thead>
                         <tr>
                             <th scope="col"> Tipo de Recibo</th>
@@ -40,5 +40,4 @@
             </div>
         </div>
     </div>
-
 @endsection
