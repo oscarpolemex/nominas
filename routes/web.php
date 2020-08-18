@@ -39,3 +39,5 @@ Route::get('validaCurp/{crit}', 'ServidorPublicoController@validaCurp')->name('v
 Route::get('getRecibos/{id}', 'DocumentosController@getRecibos')->name('getRecibos');
 Route::get('getServidores', 'ServidorPublicoController@getServidores')->name('getServidores');
 Route::get('validarServidorPublico/{id}', 'ServidorPublicoController@validarRegistro');
+Route::get('eliminaServidoresPublicos', 'ServidorPublicoController@deleteServidoresPublicosView')->name('eliminaServidoresPublicosView');
+Route::post('eliminaServidoresPublicos', 'ServidorPublicoController@deleteServidoresPublicos')->name('eliminaServidoresPublicos');

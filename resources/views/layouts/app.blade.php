@@ -129,6 +129,10 @@
                         <i class="fa fa-pencil"></i> &nbsp;&nbsp;Nuevo Registro</a>
                 </li>
                 <li>
+                    <a class="nav-link" style="background-color: #5B1E3B" href="{{route('eliminaServidoresPublicos')}}">
+                        <i class="fa fa-trash-o"></i> &nbsp;&nbsp;Eliminar servidores publicos</a>
+                </li>
+                <li>
                     <a class="nav-link" style="background-color: #5B1E3B" href="{{route('uploadFiles.create')}}">
                         <i class="fa fa-upload"></i> &nbsp;&nbsp;Cargar Documentos</a>
                 </li>

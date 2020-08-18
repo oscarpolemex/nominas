@@ -165,4 +165,25 @@ class ServidorPublicoController extends Controller
         $servidorPublico->save();
         return 'success';
     }
+
+    public function deleteServidoresPublicosView()
+    {
+        return view('ServidoresPublicos.delete');
+    }
+
+    public function deleteServidoresPublicos(Request $request)
+    {
+        $file = fopen($request->file, "r");
+        $curps = array();
+        while (($data = fgetcsv($file, 200, ",")) !== FALSE) {
+            array_push($curps, $data[0]);
+        }
+        for ($i = 1; $i < count($curps); $i++) {
+            $servidorPublico = ServidorPublico::where('curp', '=', $curps[$i])->first();
+            if ($servidorPublico) {
+                $servidorPublico->delete();
+            }
+        }
+        return redirect()->back()->with('info', '¡Se ha eliminado exitosamente la información!');
+    }
 }
