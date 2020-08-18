@@ -50,42 +50,44 @@ class UploadFilesController extends Controller
             $files = [];
             foreach ($request->file as $req) {
                 $nameFile = explode("_", $req->getClientOriginalName());
-                $ext = explode(".", $nameFile[2]);
-                $recibo = Recibo::where([
-                    'anio' => $nameFile[1],
-                    'consecutivo' => $ext[0]
-                ])->take(1)->get();
-                $tipoRecibo = null;
-                $tipo = substr($ext[0], 0, 1);
-                if ($tipo == 'Q') {
-                    $tipoRecibo = 1;
-                } else {
-                    $tipoRecibo = 2;
-                }
-                if (!count($recibo)) {
-                    $recibo = new Recibo();
-                    $recibo->tipo_recibo_id = $tipoRecibo;
-                    $recibo->anio = $nameFile[1];
-                    $recibo->consecutivo = $ext[0];
-                    $recibo->save();
-                }
-                $idServidorPublico = ServidorPublico::select('id')->where('curp', '=', $nameFile[0])->get();
-                $path = $req->store($nameFile[1] . '/' . $ext[0]);
-                $documento = new Documento();
-                if (count($idServidorPublico)) {
-                    $documento->servidor_publico_id = $idServidorPublico[0]->id;
+                if (count($nameFile) == 3) {
+                    $ext = explode(".", $nameFile[2]);
+                    $recibo = Recibo::where([
+                        'anio' => $nameFile[1],
+                        'consecutivo' => $ext[0]
+                    ])->get()->first();
+                    $tipoRecibo = null;
+                    $tipo = substr($ext[0], 0, 1);
+                    if ($tipo == 'Q') {
+                        $tipoRecibo = 1;
+                    } else {
+                        $tipoRecibo = 2;
+                    }
+                    if (!$recibo) {
+                        $recibo = new Recibo();
+                        $recibo->tipo_recibo_id = $tipoRecibo;
+                        $recibo->anio = $nameFile[1];
+                        $recibo->consecutivo = $ext[0];
+                        $recibo->save();
+                    }
+                    $idServidorPublico = ServidorPublico::select('id')->where('curp', '=', $nameFile[0])->get();
+                    $path = $req->store($nameFile[1] . '/' . $ext[0]);
+                    $documento = new Documento();
+                    if (count($idServidorPublico)) {
+                        $documento->servidor_publico_id = $idServidorPublico[0]->id;
 
-                } else {
-                    $servidorPublico = new ServidorPublico();
-                    $servidorPublico->curp = $nameFile[0];
-                    $servidorPublico->save();
-                    $documento->servidor_publico_id = $servidorPublico->id;
+                    } else {
+                        $servidorPublico = new ServidorPublico();
+                        $servidorPublico->curp = $nameFile[0];
+                        $servidorPublico->save();
+                        $documento->servidor_publico_id = $servidorPublico->id;
+                    }
+                    $documento->nombre = $req->getClientOriginalName();
+                    $documento->ruta = $path;
+                    $documento->recibo_id = $recibo->id;
+                    $documento->save();
+                    array_push($files, $path);
                 }
-                $documento->nombre = $req->getClientOriginalName();
-                $documento->ruta = $path;
-                $documento->recibo_id = $recibo->id;
-                $documento->save();
-                array_push($files, $path);
             }
             DB::commit();
             return redirect()->route('uploadFiles.create')->with('info', '¡Se han cargado exitosamente los documentos!');
