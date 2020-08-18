@@ -70,12 +70,18 @@ class UploadFilesController extends Controller
                         $recibo->consecutivo = $ext[0];
                         $recibo->save();
                     }
-                    $idServidorPublico = ServidorPublico::select('id')->where('curp', '=', $nameFile[0])->get();
+                    $idServidorPublico = ServidorPublico::select('id')->where('curp', '=', $nameFile[0])->get()->first();
+                    $documento = null;
+                    $documento = Documento::where('nombre', '=', $req->getClientOriginalName())
+                        ->get()->first();
+                    if ($documento) {
+                        Storage::delete($documento->ruta);
+                    } else {
+                        $documento = new Documento();
+                    }
                     $path = $req->store($nameFile[1] . '/' . $ext[0]);
-                    $documento = new Documento();
-                    if (count($idServidorPublico)) {
-                        $documento->servidor_publico_id = $idServidorPublico[0]->id;
-
+                    if ($idServidorPublico) {
+                        $documento->servidor_publico_id = $idServidorPublico->id;
                     } else {
                         $servidorPublico = new ServidorPublico();
                         $servidorPublico->curp = $nameFile[0];
@@ -94,8 +100,11 @@ class UploadFilesController extends Controller
         } catch (\Exception $exception) {
             if ($exception) {
                 DB::rollBack();
-                Storage::delete($files);
+                foreach ($files as $item) {
+                    Storage::delete($item);
+                }
                 return $exception;
+                //return redirect()->route('uploadFiles.create')->with('info', '¡Ocurrió un error al cargar los archivos, intentalo más tarde!');
             }
         }
 
