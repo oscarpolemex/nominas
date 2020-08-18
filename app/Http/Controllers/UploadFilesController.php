@@ -103,8 +103,8 @@ class UploadFilesController extends Controller
                 foreach ($files as $item) {
                     Storage::delete($item);
                 }
-                return $exception;
-                //return redirect()->route('uploadFiles.create')->with('info', '¡Ocurrió un error al cargar los archivos, intentalo más tarde!');
+                //return $exception;
+                return redirect()->route('uploadFiles.create')->with('info', '¡Ocurrió un error al cargar los archivos, intentalo más tarde!');
             }
         }
 
