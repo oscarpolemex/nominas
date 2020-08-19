@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => 'eduardo.sz5k4@gmail.com',
-        'name' => 'Eduardo Sanchez Zarco',
+        'address' =>  'eduardo.sz5k4@gmail.com',
+        'name' =>  'Eduardo Sanchez Zarco',
     ],
 
     /*
@@ -106,13 +106,5 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-    'stream' => [
-        'ssl' => [
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true,
-        ],
-    ],
-
 
 ];
