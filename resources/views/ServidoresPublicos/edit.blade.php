@@ -115,7 +115,7 @@
                     return false;
                 } else if (!validaCelular.test(celular)) {
                     $("#celular").children().attr("class", "text-danger");
-                    $("#celular").parent().children("span").text("Debe ingresar solo números").show();
+                    $("#celular").parent().children("span").text("¡Debe ingresar un número de telefono a 10 digitos!").show();
                     return false;
                 } else {
                     $("#celular").children().attr("class", "has-success ");
@@ -133,7 +133,7 @@
                     return false;
                 } else if (!validaTelContacto.test(telContacto)) {
                     $("#telContacto").children().attr("class", "text-danger");
-                    $("#telContacto").parent().children("span").text("Debe ingresar solo números").show();
+                    $("#telContacto").parent().children("span").text("¡Debe ingresar un número de telefono a 10 digitos!").show();
                     return false;
                 } else {
                     $("#telContacto").children().attr("class", "has-success ");
