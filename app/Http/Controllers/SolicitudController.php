@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\ServidorPublico;
 use App\Recibo;
+use App\TipoRecibo;
 use App\Mail\SendToken;
 
 class SolicitudController extends Controller
@@ -28,7 +29,7 @@ class SolicitudController extends Controller
                 return view('solicitudes.solicitud')->withErrors(["c_electronico" => "Ya se ha enviado la liga previemente"]);
             } else {
                 $servidor->token = $token;
-                $expiresAt = Carbon::now()->addMinutes(5);
+                $expiresAt = Carbon::now()->addMinutes(50);
                 Cache::put($servidor->token, $servidor, $expiresAt);
             }
             $liga = "https://nomina.test/validar_token/" . $servidor->token . "/" . $servidor->c_electronico;
@@ -46,7 +47,8 @@ class SolicitudController extends Controller
                 $servidor = Cache::get($this->request->token);
                 if ($servidor->c_electronico == $this->request->c_electronico) {
                     $servidor->documentos = $servidor->documentos->sortByDesc(true)->take(12);
-                    return view('solicitudes.recibos', compact('servidor'));
+                    $tiporecibo= TipoRecibo::all();
+                    return view('solicitudes.recibos', compact('servidor','tiporecibo'));
                 } else {
                     return view('solicitudes.solicitud')->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);
                 }
@@ -57,6 +59,30 @@ class SolicitudController extends Controller
             return view('solicitudes.solicitud')->withErrors(["c_electronico" => "No existe el token, por favor solicita otro"]);
 
         }
+    }
+    
+    public function busqueda() {
+        $servidor = ServidorPublico::find($this->request->servidor_id);
+        if ($servidor != null){
+            foreach($servidor->documentos as $documento){
+                if($documento->recibo->tipo_recibo_id == $this->request->tipo_recibo_id){
+                    if($documento->recibo->anio == $this->request->anio){
+                        $tipo = "A";
+                        if($this->request->tipo_recibo_id == 1){
+                            $tipo = "Q";
+                        }
+                        $consecutivo = $tipo.sprintf("%02d", $this->request->consecutivo);
+                        if($documento->recibo->consecutivo == $consecutivo){
+                            $documento->recibo->nombre = $documento->recibo->tipoRecibo->nombre;
+                            return $documento;
+                            break;
+                        }
+                    }
+                }
+            }
+            return response('No se encuentran datos', 500);
+        }
+        return response('No se encuentro al servidor público', 500);
     }
 
     private function random_number($length)

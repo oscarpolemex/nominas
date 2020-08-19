@@ -6,6 +6,7 @@ use App\Documento;
 use Illuminate\Http\Request;
 use App\ServidorPublico;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\Storage;
 
 
 class DocumentoController extends Controller
@@ -89,5 +90,10 @@ class DocumentoController extends Controller
     public function destroy(Documento $documento)
     {
         //
+    }
+    
+    function getFile($id){
+        $documento = Documento::find($this->request->id);
+        return Storage::download($documento->ruta,$documento->nombre);
     }
 }
