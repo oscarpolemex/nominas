@@ -83,10 +83,11 @@ return [
     |
     */
 
-    'from' => [
-        'address' =>  'nominasplem@cddiputados.gob.mx',
-        'name' =>  'Cámara de diputados',
-    ],
+//    'from' => [
+//        'address' =>  'nominasplem@cddiputados.gob.mx',
+//        'name' =>  'Cámara de diputados',
+//    ],
+    'from' => ['address' => 'nominasplem@safapi.com.mx', 'name' => 'Cámara de diputados'],
 
     /*
     |--------------------------------------------------------------------------
