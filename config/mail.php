@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' =>  'eduardo.sz5k4@gmail.com',
-        'name' =>  'Eduardo Sanchez Zarco',
+        'address' =>  'nominasplem@cddiputados.gob.mx',
+        'name' =>  'Cámara de diputados',
     ],
 
     /*
