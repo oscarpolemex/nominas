@@ -37,29 +37,22 @@
     <div class="form">
 
         <img src="{{url('IMG/Logo.png')}}" width="100%" alt=""/>
-        @error("error")
-        <div class="alert alert-danger">
-            <a class="close btn-sm" style="cursor: pointer" data-dismiss="alert">
-                &times;
-            </a>
-            <h6>{{ $message }}</h6>
-        </div>
-        @enderror
-        @error("success")
-        <div class="alert alert-success">
-            <a class="close btn-sm" style="cursor: pointer" data-dismiss="alert">
-                &times;
-            </a>
-            <h6>{{ $message }}</h6>
-        </div>
-        @enderror
-
         <form action="{{route('solicitar')}}" method="GET" class="margin-bottom-0">
             {{csrf_field()}}
             <input type="text" placeholder="Correo electrónico" name="c_electronico" id="c_electronico"/>
             <br/>
-            <button>Solicitar documento</button>
+            <button>Enviar</button>
         </form>
+        @error("error")
+        <div class="alert alert-danger mt-2">
+            <h6 class="text-justify">{{ $message }}</h6>
+        </div>
+        @enderror
+        @error("success")
+        <div class="alert alert-success mt-2">
+            <h6 class="text-justify">{{ $message }}</h6>
+        </div>
+        @enderror
     </div>
 </div>
 
@@ -67,7 +60,14 @@
 <footer> Plaza Hidalgo s/n, Colonia Centro, Toluca, Estado de M&eacute;xico. C.P. 5000<br/>
     Conmutador: 01(722) 279.64.00 y 279.65.00<br/>
 </footer>
-
-
+<script>
+    $(document).ready(function () {
+        window.setTimeout(function() {
+            $(".alert").fadeTo(1000, 0).slideUp(0, function(){
+                $(this).remove();
+            });
+        }, 1000);
+    });
+</script>
 </body>
 </html>

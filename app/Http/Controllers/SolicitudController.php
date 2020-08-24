@@ -33,11 +33,11 @@ class SolicitudController extends Controller
                 Cache::put($servidor->token, $servidor, $expiresAt);
             }
 
-            $liga = asset("/")."validar_token/" . base64_encode($servidor->token) . "/" . base64_encode($servidor->c_electronico);
+            $liga = asset("/") . "validar_token/" . base64_encode($servidor->token) . "/" . base64_encode($servidor->c_electronico);
             Mail::to($this->request->c_electronico)->send(new SendToken($servidor, $liga));
-            return view('solicitudes.solicitud')->withErrors(["success" => "Te enviamos a tu correo electronico el enlace para consultar tus recibos"]);
+            return view('solicitudes.solicitud')->withErrors(["success" => "Se envió un enlace de validación a tu correo electrónico, revisa tu bandeja de entrada e ingresa a la dirección proporcionada."]);
         } else {
-            return view('solicitudes.solicitud')->withErrors(["error" => "No existe servidor publico con ese correo"]);
+            return view('solicitudes.solicitud')->withErrors(["error" => "No existe servidor publico registrado con la dirección de correo electrónico ingresada"]);
         }
     }
 
@@ -50,8 +50,8 @@ class SolicitudController extends Controller
                 $servidor = Cache::get($token);
                 if ($servidor->c_electronico == $correo) {
                     $servidor->documentos = $servidor->documentos->sortByDesc(true)->take(12);
-                    $tiporecibo= TipoRecibo::all();
-                    return view('solicitudes.recibos', compact('servidor','tiporecibo'));
+                    $tiporecibo = TipoRecibo::all();
+                    return view('solicitudes.recibos', compact('servidor', 'tiporecibo'));
                 } else {
                     return view('solicitudes.solicitud')->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);
                 }
@@ -64,18 +64,19 @@ class SolicitudController extends Controller
         }
     }
 
-    public function busqueda() {
+    public function busqueda()
+    {
         $servidor = ServidorPublico::find($this->request->servidor_id);
-        if ($servidor != null){
-            foreach($servidor->documentos as $documento){
-                if($documento->recibo->tipo_recibo_id == $this->request->tipo_recibo_id){
-                    if($documento->recibo->anio == $this->request->anio){
+        if ($servidor != null) {
+            foreach ($servidor->documentos as $documento) {
+                if ($documento->recibo->tipo_recibo_id == $this->request->tipo_recibo_id) {
+                    if ($documento->recibo->anio == $this->request->anio) {
                         $tipo = "A";
-                        if($this->request->tipo_recibo_id == 1){
+                        if ($this->request->tipo_recibo_id == 1) {
                             $tipo = "Q";
                         }
-                        $consecutivo = $tipo.sprintf("%02d", $this->request->consecutivo);
-                        if($documento->recibo->consecutivo == $consecutivo){
+                        $consecutivo = $tipo . sprintf("%02d", $this->request->consecutivo);
+                        if ($documento->recibo->consecutivo == $consecutivo) {
                             $documento->recibo->nombre = $documento->recibo->tipoRecibo->nombre;
                             return $documento;
                             break;
