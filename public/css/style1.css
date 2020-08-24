@@ -89,9 +89,9 @@
   color: #EF3B3A;
 }
 body {
-background:#DCDCDC; 
+background:#DCDCDC;
 font-family: "Roboto", sans-serif;
-     
+
 }
 
 
@@ -107,9 +107,9 @@ footer
     width: 100%;
     bottom: 0;
 	position:fixed;
-	color:#FFF;	
+	color:#FFF;
     height: 45px;
 	text-align:center;
 	padding-top:10px;
-	
+
 }

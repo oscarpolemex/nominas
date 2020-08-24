@@ -31,6 +31,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{{url('css/cssformatoCentral.css')}}">
+
 </head>
 <body>
 <div class="login-page">
@@ -62,8 +64,8 @@
 </footer>
 <script>
     $(document).ready(function () {
-        window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(800, function(){
+        window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(800, function () {
                 $(this).remove();
             });
         }, 5000);
