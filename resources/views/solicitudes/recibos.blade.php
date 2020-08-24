@@ -24,7 +24,6 @@
                         <th scope="col"> Número de Recibo</th>
                         <th scope="col"> Fecha</th>
                         <th scope="col"> Documento</th>
-                        <th scope="col"> Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,7 +76,6 @@
                         </div>
                     </div>
                     <div class='col-md-12' align='center'>
-                        <label id='labelError'></label>
                         <input type='button' class='btn btn-primary' id='btnBusqueda' value='Busqueda'/>
                     </div><br>
                     <div class='col-md-12'>
@@ -88,11 +86,10 @@
                                     <th scope="col"> Número de Recibo</th>
                                     <th scope="col"> Fecha</th>
                                     <th scope="col"> Documento</th>
-                                    <th scope="col"> Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                             </tbody>
                         </table>
                     </div>
@@ -130,6 +127,11 @@
                             html +='</tr>';
                             $("#tableBusqueda tbody").html(html);
                         },error:function(data){
+                            var html= '';
+                            html +='<tr>';
+                            html +='<td colspan="5"><h3 id="labelError" class="text-center" ></td>';
+                            html += '</tr>'
+                            $("#tableBusqueda tbody").html(html);
                             $("#labelError").text(data.responseText);
                         }
                     });
@@ -139,7 +141,7 @@
             }else{
                 alert('Ingresa año de recibo')
             }
-        
+
         }else{
             alert('Selecciona tipo de recibo')
         }
