@@ -63,10 +63,10 @@
 <script>
     $(document).ready(function () {
         window.setTimeout(function() {
-            $(".alert").fadeTo(1000, 0).slideUp(0, function(){
+            $(".alert").fadeTo(500, 0).slideUp(800, function(){
                 $(this).remove();
             });
-        }, 1000);
+        }, 5000);
     });
 </script>
 </body>
