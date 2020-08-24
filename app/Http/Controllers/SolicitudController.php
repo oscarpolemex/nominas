@@ -29,10 +29,11 @@ class SolicitudController extends Controller
                 return view('solicitudes.solicitud')->withErrors(["c_electronico" => "Ya se ha enviado la liga previemente"]);
             } else {
                 $servidor->token = $token;
-                $expiresAt = Carbon::now()->addMinutes(50);
+                $expiresAt = Carbon::now()->addMinutes(8);
                 Cache::put($servidor->token, $servidor, $expiresAt);
             }
-            $liga = "https://nomina.test/validar_token/" . $servidor->token . "/" . $servidor->c_electronico;
+            
+            $liga = asset("/")."validar_token/" . base64_encode($servidor->token) . "/" . base64_encode($servidor->c_electronico);
             Mail::to($this->request->c_electronico)->send(new SendToken($servidor, $liga));
             return view('solicitudes.solicitud')->withErrors(["c_electronico" => "Te enviamos a tu correo electronico el enlace para consultar tus recibos"]);
         } else {
@@ -43,9 +44,11 @@ class SolicitudController extends Controller
     public function validarToken()
     {
         if ($this->request->token != "") {
-            if (Cache::has($this->request->token)) {
-                $servidor = Cache::get($this->request->token);
-                if ($servidor->c_electronico == $this->request->c_electronico) {
+            $token = base64_decode($this->request->token);
+            $correo = base64_decode($this->request->c_electronico);
+            if (Cache::has($token)) {
+                $servidor = Cache::get($token);
+                if ($servidor->c_electronico == $correo) {
                     $servidor->documentos = $servidor->documentos->sortByDesc(true)->take(12);
                     $tiporecibo= TipoRecibo::all();
                     return view('solicitudes.recibos', compact('servidor','tiporecibo'));
