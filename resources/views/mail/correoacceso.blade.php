@@ -40,7 +40,7 @@
                 <div class="brand">
                     <span>
                         <img src="http://administracionyfinanzasplem.gob.mx/jardinN/Adds/IMG/Logo.png" width="220px">
-                    </span> 
+                    </span>
                 </div>
             </div>
             <!-- end brand -->
@@ -49,31 +49,31 @@
                 <br>
                 <h1>Secretaría de Administración y Finanzas <br></h1>
                 <h2>Dirección y Administración de Desarrollo de Personal </h2>
-                
-               <font size= "5"
+
+               <font size= "5">
                 <p>
-                    Bienvenido {{$servidor->nombre}} 
+                    Bienvenido {{$servidor->nombre}}
                     <br><br>
-                    Gracias por utilizar el servicio de confirmación de e-mail. 
+                    Gracias por utilizar el servicio de confirmación de e-mail.
                     A continuación se le otorgará un enlace que lo reedireccionará a la página de nómina.
                     <br>  Click en el boton "Confirmar".
                 </p>
                 </font>
-                <center>    
-                 
+                <center>
+
                     <a href="{{$liga}}" class="nounderline"> C O N F I R M A R  </a>
-                   
-                   
+
+
                 </center>
                 <p>
                     <small>
-                        En caso de no poder ver el mensaje de forma correcta Copia y pega la siguiente liga en tu navegador: 
+                        En caso de no poder ver el mensaje de forma correcta Copia y pega la siguiente liga en tu navegador:
                         <a href="{{$liga}}">{{$liga}}</a>
                     </small>
                 </p>
             </div>
             <!-- end login-content -->
         </div>
-        
+
     </body>
 </html>

@@ -32,12 +32,12 @@ class SolicitudController extends Controller
                 $expiresAt = Carbon::now()->addMinutes(8);
                 Cache::put($servidor->token, $servidor, $expiresAt);
             }
-            
+
             $liga = asset("/")."validar_token/" . base64_encode($servidor->token) . "/" . base64_encode($servidor->c_electronico);
             Mail::to($this->request->c_electronico)->send(new SendToken($servidor, $liga));
-            return view('solicitudes.solicitud')->withErrors(["c_electronico" => "Te enviamos a tu correo electronico el enlace para consultar tus recibos"]);
+            return view('solicitudes.solicitud')->withErrors(["success" => "Te enviamos a tu correo electronico el enlace para consultar tus recibos"]);
         } else {
-            return view('solicitudes.solicitud')->withErrors(["c_electronico" => "No existe servidor publico con ese correo"]);
+            return view('solicitudes.solicitud')->withErrors(["error" => "No existe servidor publico con ese correo"]);
         }
     }
 
@@ -63,7 +63,7 @@ class SolicitudController extends Controller
 
         }
     }
-    
+
     public function busqueda() {
         $servidor = ServidorPublico::find($this->request->servidor_id);
         if ($servidor != null){

@@ -25,21 +25,39 @@
         /*Link visitado*/
     </style>
     <link rel="stylesheet" type="text/css" href="{{url('css/style1.css')}}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="login-page">
     <div class="form">
+
         <img src="{{url('IMG/Logo.png')}}" width="100%" alt=""/>
-        <br><br>
+        @error("error")
+        <div class="alert alert-danger">
+            <a class="close btn-sm" style="cursor: pointer" data-dismiss="alert">
+                &times;
+            </a>
+            <h6>{{ $message }}</h6>
+        </div>
+        @enderror
+        @error("success")
+        <div class="alert alert-success">
+            <a class="close btn-sm" style="cursor: pointer" data-dismiss="alert">
+                &times;
+            </a>
+            <h6>{{ $message }}</h6>
+        </div>
+        @enderror
+
         <form action="{{route('solicitar')}}" method="GET" class="margin-bottom-0">
             {{csrf_field()}}
             <input type="text" placeholder="Correo electrónico" name="c_electronico" id="c_electronico"/>
             <br/>
-            @error("c_electronico")
-            <span class=”invalid-feedback” role=”alert”>
-            <strong>{{ $message }}</strong>
-            </span>
-            @enderror
             <button>Solicitar documento</button>
         </form>
     </div>
