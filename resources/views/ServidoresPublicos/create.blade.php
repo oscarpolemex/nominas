@@ -22,44 +22,45 @@
                     </div>
                 @endif
             </div>
-            <div class="card-body">
-                <div class="collapse" id="collapseExample">
-                    <div class="card-body text-justify">
-                        <ol class="ayuda">
-                            <ol>
-                                <p> La Dirección de Administración y Desarrollo de Personal le sugiere que antes de
-                                    comenzar el llenado del formulario, lea atentamente este instructivo. Todos los
-                                    campos deben estar completos al momento de enviar la información con datos relativos
-                                    únicamente al servidor público de acuerdo a las siguientes indicaciones:
-                                </p>
+            <div class="collapse float-auto" id="collapseExample">
+                <div class="card-body" style="font-size: 14px; color: #000000;!important;">
+                    <ol class="ayuda">
+                        <ol>
+                            <p style="color: #000000;!important;" class="text-justify"> La Dirección de Administración y Desarrollo de Personal le sugiere que antes de
+                                comenzar el llenado del formulario, lea atentamente este instructivo. Todos los
+                                campos deben estar completos al momento de enviar la información con datos relativos
+                                únicamente al servidor público de acuerdo a las siguientes indicaciones:
+                            </p>
 
 
-                                <li><strong>Nombre completo:</strong> ingrese el nombre y apellidos completos, sin
-                                    abreviaturas, en caso
-                                    de ser más de uno incluya los datos de cada uno.
-                                </li>
+                            <li><strong>Nombre completo:</strong> ingrese el nombre y apellidos completos, sin
+                                abreviaturas, en caso
+                                de ser más de uno incluya los datos de cada uno.
+                            </li>
 
-                                <li><strong>CURP:</strong> Clave Única de Registro de Población.</li>
+                            <li><strong>CURP:</strong> Clave Única de Registro de Población.</li>
 
-                                <li><strong>Correo electrónico:</strong> Dirección de correo electrónico, en minúsculas
-                                    y sin dejar espacios
-                                    en blanco.
-                                </li>
+                            <li><strong>Correo electrónico:</strong> Dirección de correo electrónico, en minúsculas
+                                y sin dejar espacios
+                                en blanco.
+                            </li>
 
-                                <li><strong>Confirmación de correo electrónico:</strong> Dirección de correo electrónico
-                                    idéntica al campo
-                                    anterior, en minúsculas y sin dejar espacios en blanco
-                                </li>
+                            <li><strong>Confirmación de correo electrónico:</strong> Dirección de correo electrónico
+                                idéntica al campo
+                                anterior, en minúsculas y sin dejar espacios en blanco
+                            </li>
 
-                                <li><strong>Teléfono celular:</strong> Número de contacto móvil a 10 dígitos.</li>
-                                <li><strong>Teléfono de oficina / Extensión(opcional):</strong> Número de contacto fijo
-                                    a 10 dígitos y
-                                    extensión.
-                                </li>
-                            </ol>
+                            <li><strong>Teléfono celular:</strong> Número de contacto móvil a 10 dígitos.</li>
+                            <li><strong>Teléfono de oficina / Extensión(opcional):</strong> Número de contacto fijo
+                                a 10 dígitos y
+                                extensión.
+                            </li>
                         </ol>
-                    </div>
+                    </ol>
                 </div>
+            </div>
+            <div class="card-body">
+
                 @if(auth()->user())
                     {!! Form::open(['route'=>'ServidoresPublicos.store', 'method'=>'POST', 'files' => true, 'role' => 'form', 'id' => 'formServidorPublico']) !!}
                 @else
