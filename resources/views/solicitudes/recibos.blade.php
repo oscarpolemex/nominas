@@ -79,19 +79,21 @@
                         <input type='button' class='btn btn-primary' id='btnBusqueda' value='Busqueda'/>
                     </div><br>
                     <div class='col-md-12'>
-                        <table class="table table-striped table-bordered" id='tableBusqueda'>
-                            <thead>
-                                <tr>
-                                    <th scope="col"> Tipo de Recibo</th>
-                                    <th scope="col"> Número de Recibo</th>
-                                    <th scope="col"> Fecha</th>
-                                    <th scope="col"> Documento</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" id='tableBusqueda'>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Tipo de Recibo</th>
+                                        <th scope="col"> Número de Recibo</th>
+                                        <th scope="col"> Fecha</th>
+                                        <th scope="col"> Documento</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+    
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
