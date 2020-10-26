@@ -114,7 +114,7 @@
     @if(auth()->user())
         <nav id="sidebar" style="background-color: #5B1E3B">
             <div class="sidebar-header" style="background-color: #5B1E3B">
-                <img src="{{url('IMG/NLogo.png')}}" class="img" width="80%">
+                <img src="{{url('IMG/Logo.png')}}" class="img" width="90%">
                 <br>
             </div>
             <ul class="list-unstyled components">
@@ -144,7 +144,7 @@
         <nav class="navbar navbar-expand-lg" style="background-color: #682244">
             @if(!auth()->user())
                 <div class="sidebar-header">
-                    <img src="{{url('images/Logo.png')}}" class="img" width="40%">
+                    <img src="{{url('images/Logo.png')}}" class="img" width="20%">
                     <br>
                 </div>
             @endif

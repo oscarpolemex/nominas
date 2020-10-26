@@ -1,17 +1,25 @@
-<div class="form-group">
-    {!! Form::label('nombre', 'Nombre completo:') !!}
-    {!! Form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'',  'id' => 'nombre']) !!}
-    <span class="text-danger" style="font-size:150%"></span>
-</div>
 <div class="form-row">
+    <div class="form-group col-md-6">
+        {!! Form::label('nombre', 'Nombre completo:') !!}
+        {!! Form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'',  'id' => 'nombre']) !!}
+        <span class="text-danger" style="font-size:150%"></span>
+    </div>
     <div class="form-group col-md-6">
         {!! Form::label('curp', 'Curp:') !!}
         {!! Form::text('curp',null,['class'=>'form-control text-uppercase', 'placeholder'=>'',  'id' => 'curp']) !!}
         <span class="text-danger" style="font-size:150%"></span>
     </div>
+</div>
+<div class="form-row">
+
     <div class="form-group col-md-6">
         {!! Form::label('c_electronico', 'Correo electronico:') !!}
         {!! Form::text('c_electronico',null,['class'=>'form-control', 'placeholder'=>'',  'id' => 'correo']) !!}
+        <span class="text-danger" style="font-size:150%"></span>
+    </div>
+    <div class="form-group col-md-6">
+        {!! Form::label('c_electronico_confirm', 'Confirmar correo electronico:') !!}
+        {!! Form::text('c_electronico_confirm',null,['class'=>'form-control', 'placeholder'=>'',  'id' => 'correo_confirm']) !!}
         <span class="text-danger" style="font-size:150%"></span>
     </div>
 </div>

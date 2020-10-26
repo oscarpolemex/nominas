@@ -2,18 +2,64 @@
 @section('content')
     <div class="container mt-2">
         <div class="card">
-            <div class="card-header bg-info  border-0 py-3 d-flex align-items-center"
+            <div class="card-header"
                  style="background-color:#F1F1F1 !important;">
-                <div>
-                    @if(auth()->user())
-                        <h3 class="card-title mb-0">AGREGAR</h3>
-                    @else
-                        <h3 class="card-title mb-0">REGISTRARSE</h3>
-                    @endif
 
-                </div>
+                @if(auth()->user())
+                    <h3 class="card-title mb-0">AGREGAR</h3>
+                @else
+                    <div class="float-left">
+                        <h3 class="card-title mb-0">REGISTRARSE</h3>
+                    </div>
+                    <div class="float-right">
+                        <h6>
+                            <span class="badge badge-success badge-lg ml-auto px-4" data-toggle="collapse"
+                                  href="#collapseExample" role="button" aria-expanded="false"
+                                  aria-controls="collapseExample">
+                                AYUDA
+                            </span>
+                        </h6>
+                    </div>
+                @endif
             </div>
             <div class="card-body">
+                <div class="collapse" id="collapseExample">
+                    <div class="card-body text-justify">
+                        <ol class="ayuda">
+                            <ol>
+                                <p> La Dirección de Administración y Desarrollo de Personal le sugiere que antes de
+                                    comenzar el llenado del formulario, lea atentamente este instructivo. Todos los
+                                    campos deben estar completos al momento de enviar la información con datos relativos
+                                    únicamente al servidor público de acuerdo a las siguientes indicaciones:
+                                </p>
+
+
+                                <li><strong>Nombre completo:</strong> ingrese el nombre y apellidos completos, sin
+                                    abreviaturas, en caso
+                                    de ser más de uno incluya los datos de cada uno.
+                                </li>
+
+                                <li><strong>CURP:</strong> Clave Única de Registro de Población.</li>
+
+                                <li><strong>Correo electrónico:</strong> Dirección de correo electrónico, en minúsculas
+                                    y sin dejar espacios
+                                    en blanco.
+                                </li>
+
+                                <li><strong>Confirmación de correo electrónico:</strong> Dirección de correo electrónico
+                                    idéntica al campo
+                                    anterior, en minúsculas y sin dejar espacios en blanco
+                                </li>
+
+                                <li><strong>Teléfono celular:</strong> Número de contacto móvil a 10 dígitos.</li>
+                                <li><strong>Teléfono de oficina / Extensión(opcional):</strong> Número de contacto fijo
+                                    a 10 dígitos y
+                                    extensión.
+                                </li>
+                            </ol>
+                        </ol>
+                    </div>
+                </div>
                 @if(auth()->user())
                     {!! Form::open(['route'=>'ServidoresPublicos.store', 'method'=>'POST', 'files' => true, 'role' => 'form', 'id' => 'formServidorPublico']) !!}
                 @else
@@ -38,8 +84,9 @@
                 correoValidate();
                 celularValidate();
                 telContactoValidate();
+                correoConfirm();
                 if (nombreValidate() === true && curpValidate() === true && correoValidate() === true
-                    && celularValidate() === true && telContactoValidate() === true) {
+                    && celularValidate() === true && telContactoValidate() === true && correoConfirm() === true) {
                     $('#formServidorPublico').submit();
                 }
             });
@@ -58,6 +105,19 @@
                 } else {
                     $("#nombre").children().attr("class", "has-success ");
                     $("#nombre").parent().children("span").text("").hide();
+                    return true;
+                }
+            }
+
+            function correoConfirm() {
+                var correo = document.getElementById("correo_confirm").value;
+                if (correo == null || correo.length === 0) {
+                    $("#correo_confirm").children().attr("class", "text-danger");
+                    $("#correo_confirm").parent().children("span").text("¡El campo está vacio!").show();
+                    return false;
+                } else {
+                    $("#correo_confirm").children().attr("class", "has-success ");
+                    $("#correo_confirm").parent().children("span").text("").hide();
                     return true;
                 }
             }
@@ -156,6 +216,25 @@
                     });
                 }
             });
+            $("#correo_confirm").blur(function () {
+                var correo = $("#correo").val();
+                var correo_confirm = $(this).val();
+                if (correo_confirm.length) {
+                    if (correo !== correo_confirm) {
+                        $(this).children().attr("class", "text-danger");
+                        $(this).parent().children("span").text("¡No coincide el correo electronico!").show();
+                        $(this).val('');
+                    } else {
+                        $(this).children().attr("class", "has-success ");
+                        $(this).parent().children("span").text("").hide();
+                    }
+                } else {
+                    $(this).children().attr("class", "text-danger");
+                    $(this).parent().children("span").text("¡No haz ingresado el correo electronico!").show();
+                    $(this).val('');
+                }
+            });
+
             $('#curp').blur(function curp() {
                 let curp = $('#curp').val();
                 if (curp.length) {
