@@ -5,7 +5,7 @@
         <span class="text-danger" style="font-size:150%"></span>
     </div>
     <div class="form-group col-md-6">
-        {!! Form::label('curp', 'Curp:') !!}
+        {!! Form::label('curp', 'CURP:') !!}
         {!! Form::text('curp',null,['class'=>'form-control text-uppercase', 'placeholder'=>'',  'id' => 'curp']) !!}
         <span class="text-danger" style="font-size:150%"></span>
     </div>
