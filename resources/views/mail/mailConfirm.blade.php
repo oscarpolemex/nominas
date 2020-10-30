@@ -53,21 +53,20 @@
     <!-- end brand -->
     <!-- begin login-content -->
     <div class="login-content" style="background: #f2f4f5 !important;Margin:-10px;">
+        <br>
         <h1>Secretaría de Administración y Finanzas</h1>
         <h2>Dirección y Administración de Desarrollo de Personal </h2>
         <p>
-            Bienvenido <strong>{{$servidor->nombre}}</strong>.
-            <br>
-            Gracias por utilizar el servicio de confirmación de e-mail.
-            A continuación se le otorgará un enlace que lo reedireccionará al Sistema de Comprobantes de Pago de Nómina del Poder Legislativo.
+            Bienvenido <strong>{{$nombre}}</strong>,
+            el registro ha sido completado. A continuación se le otorgará un enlace que lo reedireccionará al Sistema de Comprobantes de Pago de Nómina del Poder Legislativo.
         </p>
         <center>
-            <a href="{{$liga}}" class="btn">IR AL SISTEMA</a>
+            <a href="{{route('solicitud')}}" class="btn">IR AL SISTEMA</a>
         </center>
         <p>
             <small>
                 En caso de no poder ver el mensaje de forma correcta Copia y pega la siguiente liga en tu navegador:
-                <a href="{{$liga}}">{{$liga}}</a>
+                <a href="{{route('solicitud')}}">{{route('solicitud')}}</a>
             </small>
         </p>
     </div>

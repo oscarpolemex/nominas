@@ -19,6 +19,13 @@ class CreateTipoRecibosTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+        $path = base_path("database/catalogos/tiposRecibos.json");
+        $json = json_decode(file_get_contents($path));
+        foreach ($json as $item) {
+            DB::table("tipos_recibos")->insert([
+                "nombre" => $item->nombre,
+            ]);
+        }
     }
 
     /**

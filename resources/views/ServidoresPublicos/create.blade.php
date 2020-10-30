@@ -32,16 +32,22 @@
                     </div>
                     <div class="mt-2"></div>
                     <ul>
-                        <li><strong>Nombre completo:</strong> ingrese el nombre y apellidos completos, sin
+                        <li><strong>Nombre completo</strong> (ingrese el nombre y apellidos completos, sin abreviaturas,
+                            en caso de ser más de uno incluya los datos de cada uno);
                             abreviaturas, en caso
                             de ser más de uno incluya los datos de cada uno.
                         </li>
 
-                        <li><strong>CURP:</strong> Clave Única de Registro de Población.</li>
+                        <li><strong>CURP</strong> (Clave Única de Registro de Población), escribir los 18 caracteres
+                            como la emitió la Secretaria de Gobernación. En caso de no contar con ella, podrá
+                            consultarla en la página de la citada Secretaría, en el apartado de Trámites;
+                        </li>
 
-                        <li><strong>Correo electrónico:</strong> Dirección de correo electrónico, en minúsculas
-                            y sin dejar espacios
-                            en blanco.
+                        <li><strong>Correo electrónico</strong> (Dirección de correo electrónico, en minúsculas y sin
+                            dejar espacios en
+                            blanco). Escribir la dirección de correo electrónico que el solicitante haya generado para
+                            su
+                            uso personal. En caso de no contar con él, deberá generar una cuenta;
                         </li>
 
                         <li><strong>Confirmación de correo electrónico:</strong> Dirección de correo electrónico
@@ -49,10 +55,9 @@
                             anterior, en minúsculas y sin dejar espacios en blanco
                         </li>
 
-                        <li><strong>Teléfono celular:</strong> Número de contacto móvil a 10 dígitos.</li>
-                        <li><strong>Teléfono de oficina / Extensión(opcional):</strong> Número de contacto fijo
-                            a 10 dígitos y
-                            extensión.
+                        <li><strong>Teléfono celular</strong> (Número de contacto móvil a 10 dígitos);</li>
+                        <li><strong>Teléfono de oficina</strong> (Número de contacto fijo a 10 dígitos);</li>
+                        <li><strong>Extensión;</strong> Y a continuación, presione el botón <strong>Guardar</strong>.
                         </li>
                     </ul>
                 </div>

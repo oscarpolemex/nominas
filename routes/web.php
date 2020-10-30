@@ -21,7 +21,7 @@ Route::get('/', 'HomeController@index');
 Route::get('solicitar_token', 'SolicitudController@enviarToken')->name('solicitar');
 Route::get('solicitud', function () {
     return view('solicitudes.solicitud');
-});
+})->name('solicitud');
 Route::get('validar_token/{token}/{c_electronico}', 'SolicitudController@validarToken');
 
 Auth::routes(['register' => false]);
@@ -36,9 +36,9 @@ Route::post('externo/ServidoresPublicos', 'ServidorPublicoController@store')->na
 Route::post('downloadFile', 'DocumentoController@getFile')->name('downloadFile');
 Route::get('validaEmail/{crit}', 'ServidorPublicoController@validaEmail')->name('validaEmail');
 Route::get('validaCurp/{crit}', 'ServidorPublicoController@validaCurp')->name('validaCurp');
-Route::get('getRecibos/{id}', 'DocumentosController@getRecibos')->name('getRecibos');
+//Route::get('getRecibos/{id}', 'DocumentosController@getRecibos')->name('getRecibos');
 Route::get('getServidores', 'ServidorPublicoController@getServidores')->name('getServidores');
-Route::get('validarServidorPublico/{id}', 'ServidorPublicoController@validarRegistro');
+Route::get('validarServidorPublico/{id}', 'ServidorPublicoController@validarRegistro')->name('validarServidorPublico');
 Route::get('eliminaServidoresPublicos', 'ServidorPublicoController@deleteServidoresPublicosView')->name('eliminaServidoresPublicosView');
 Route::post('eliminaServidoresPublicos', 'ServidorPublicoController@deleteServidoresPublicos')->name('eliminaServidoresPublicos');
 Route::get('recibos/busqueda/{tipo_recibo_id}/{anio}/{consecutivo}/{servidor_id}', 'SolicitudController@busqueda');

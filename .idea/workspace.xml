@@ -19,10 +19,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a75bcf0-8ce6-4b60-9148-46fc431116e4" name="Default Changelist" comment="- Cambio tamaño de letra x2">
+    <list default="true" id="1a75bcf0-8ce6-4b60-9148-46fc431116e4" name="Default Changelist" comment="CURP">
+      <change afterPath="$PROJECT_DIR$/app/Mail/SendConfirm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/catalogos/tiposRecibos.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/mail/mailConfirm.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/ServidoresPublicos/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ServidoresPublicos/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServidorPublicoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServidorPublicoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_10_233216_create_tipo_recibos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_10_233216_create_tipo_recibos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ServidoresPublicos/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ServidoresPublicos/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ServidoresPublicos/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ServidoresPublicos/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mail/correoacceso.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/correoacceso.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/solicitudes/solicitud.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/solicitudes/solicitud.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,17 +157,27 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1fjdXxhKqOOdaIYOR5xtXPhUikp" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../declaranet/database/catalogos/catalogos/json/genero.json" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HP\code\nominas\resources\views\mail" />
+      <recent name="C:\Users\HP\code\nominas\resources\views\emails" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -176,7 +197,8 @@
       <workItem from="1603737172017" duration="14082000" />
       <workItem from="1603905083194" duration="2294000" />
       <workItem from="1603909311894" duration="27000" />
-      <workItem from="1604011542746" duration="40000" />
+      <workItem from="1604011542746" duration="840000" />
+      <workItem from="1604077833936" duration="15119000" />
     </task>
     <task id="LOCAL-00001" summary="- Validación correo&#10;- Cambio de Logo&#10;- Sección de Ayuda">
       <created>1603746674821</created>
@@ -199,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603753575391</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="CURP">
+      <created>1604011601313</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604011601313</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,19 +247,37 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="- Validación correo&#10;- Cambio de Logo&#10;- Sección de Ayuda" />
     <MESSAGE value="- Cambio tamaño de letra" />
     <MESSAGE value="- Cambio tamaño de letra x2" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Cambio tamaño de letra x2" />
+    <MESSAGE value="CURP" />
+    <option name="LAST_COMMIT_MESSAGE" value="CURP" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1603909337852">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604089385045">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1603909337852" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1603753581377">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1604089385045" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604081647262">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603753581377" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604081647262" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1604011606818">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1604011606818" />
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1604086969242">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1604086969242" />
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604101988583">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1604101988583" />
+    <state x="405" y="276" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604086994970">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="405" y="276" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1366.728@0.0.1366.728" timestamp="1604086994970" />
   </component>
 </project>

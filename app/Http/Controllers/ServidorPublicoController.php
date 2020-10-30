@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendConfirm;
+use App\Mail\SendToken;
 use Illuminate\Http\Request;
 use App\ServidorPublico;
+use Illuminate\Support\Facades\Mail;
 use Yajra\Datatables\Datatables;
 
 class ServidorPublicoController extends Controller
@@ -163,7 +166,9 @@ class ServidorPublicoController extends Controller
         $servidorPublico = ServidorPublico::find($id);
         $servidorPublico->verificado = true;
         $servidorPublico->save();
-        return 'success';
+        $nombre = $servidorPublico->nombre;
+        Mail::to($servidorPublico->c_electronico)->send(new SendConfirm($nombre));
+        return redirect()->route('ServidoresPublicos.index')->with('info', '¡Se ha verificado el registro y se notificó al servidor público!');
     }
 
     public function deleteServidoresPublicosView()

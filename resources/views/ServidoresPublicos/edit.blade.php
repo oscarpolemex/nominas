@@ -5,7 +5,7 @@
             <button class="btn btn-danger" id="confirmDescartar"><i>Descartar</i></button>
         </div>
         <div class="col">
-            <button class="btn btn-success" id="validar"><i>Validar</i></button>
+            <a href="{{route('validarServidorPublico',$servidorPublico->id)}}" class="btn btn-success" style="text-decoration: none;"><i>Validar</i></a>
         </div>
     @endif
 @endsection
