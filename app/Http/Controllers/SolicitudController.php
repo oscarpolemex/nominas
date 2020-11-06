@@ -24,18 +24,21 @@ class SolicitudController extends Controller
     {
         $servidor = ServidorPublico::where('c_electronico', $this->request->c_electronico)->first();
         if ($servidor != null) {
-            $token = $this->random_number(6);
-            if (Cache::has($servidor->id)) {
-                return view('solicitudes.solicitud')->withErrors(["c_electronico" => "Ya se ha enviado la liga previemente"]);
+            if ($servidor->verificado == true) {
+                $token = $this->random_number(6);
+                if (Cache::has($servidor->id)) {
+                    return view('solicitudes.solicitud')->withErrors(["c_electronico" => "Ya se ha enviado la liga previemente"]);
+                } else {
+                    $servidor->token = $token;
+                    $expiresAt = Carbon::now()->addMinutes(8);
+                    Cache::put($servidor->token, $servidor, $expiresAt);
+                }
+                $liga = asset("/") . "validar_token/" . base64_encode($servidor->token) . "/" . base64_encode($servidor->c_electronico);
+                Mail::to($this->request->c_electronico)->send(new SendToken($servidor, $liga));
+                return view('solicitudes.solicitud')->withErrors(["success" => "Se envió un enlace de validación a tu correo electrónico, revisa tu bandeja de entrada e ingresa a la dirección proporcionada."]);
             } else {
-                $servidor->token = $token;
-                $expiresAt = Carbon::now()->addMinutes(8);
-                Cache::put($servidor->token, $servidor, $expiresAt);
+                return view('solicitudes.solicitud')->withErrors(["error" => "Su registro aún no ha sido validado, consuilte con su administrador."]);
             }
-
-            $liga = asset("/") . "validar_token/" . base64_encode($servidor->token) . "/" . base64_encode($servidor->c_electronico);
-            Mail::to($this->request->c_electronico)->send(new SendToken($servidor, $liga));
-            return view('solicitudes.solicitud')->withErrors(["success" => "Se envió un enlace de validación a tu correo electrónico, revisa tu bandeja de entrada e ingresa a la dirección proporcionada."]);
         } else {
             return view('solicitudes.solicitud')->withErrors(["error" => "No existe servidor publico registrado con la dirección de correo electrónico ingresada"]);
         }
