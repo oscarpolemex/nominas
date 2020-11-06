@@ -52,7 +52,7 @@
 
             function nombreValidate() {
                 var nombre = document.getElementById("nombre").value;
-                var cadenaValidate = /^[A-Za-zñÑáÁéEíÍópOúÚ ]+$/;
+                var cadenaValidate = /^[A-Za-zñÑáÁéEíÍópOúÚ. ]+$/;
                 if (nombre == null || nombre.length === 0) {
                     $("#nombre").children().attr("class", "text-danger");
                     $("#nombre").parent().children("span").text("¡El campo está vacio!").show();
