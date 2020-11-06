@@ -37,7 +37,7 @@ class SolicitudController extends Controller
                 Mail::to($this->request->c_electronico)->send(new SendToken($servidor, $liga));
                 return view('solicitudes.solicitud')->withErrors(["success" => "Se envió un enlace de validación a tu correo electrónico, revisa tu bandeja de entrada e ingresa a la dirección proporcionada."]);
             } else {
-                return view('solicitudes.solicitud')->withErrors(["error" => "Su registro aún no ha sido validado, consuilte con su administrador."]);
+                return view('solicitudes.solicitud')->withErrors(["error" => "Su registro aún no ha sido validado, consulte con su administrador."]);
             }
         } else {
             return view('solicitudes.solicitud')->withErrors(["error" => "No existe servidor publico registrado con la dirección de correo electrónico ingresada"]);
