@@ -19,7 +19,7 @@
                 </div>
                 <div class="1">
                     <button class="btn btn-primary" onclick="location.href='{{route('ServidoresPublicos.index')}}'">
-                        <i class="fa fa-arrow-left"></i>Regresar
+                        <i class="fa fa-arrow-left"></i> Regresar
                     </button>
                 </div>
             </div>
