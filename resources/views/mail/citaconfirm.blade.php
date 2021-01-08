@@ -57,16 +57,15 @@
         <h1>Secretaría de Administración y Finanzas</h1>
         <h2>Dirección y Administración de Desarrollo de Personal </h2>
         <p>
-            Bienvenido (a): <strong>{{$nombre}}</strong>,
-            el registro ha sido completado. A continuación se le otorgará un enlace que lo reedireccionará al Sistema de Comprobantes de Pago de Nómina del Poder Legislativo.
+            Estimado (a): <strong>{{$servidor}}</strong>.
+            <br>
+            Su cita para <strong>{{$evento}}</strong> ha sido generada exitosamente. Debe asistir el
+            día <strong>{{$fechacita}}</strong> a
+            las <strong>{{$hora}}</strong>
         </p>
-        <center>
-            <a href="{{route('solicitud')}}" class="btn">IR AL SISTEMA</a>
-        </center>
         <p>
             <small>
-                En caso de no poder ver el mensaje de forma correcta Copia y pega la siguiente liga en tu navegador:
-                <a href="{{route('solicitud')}}">{{route('solicitud')}}</a>
+                {!! nl2br(e($descripcion), false) !!}
             </small>
         </p>
     </div>

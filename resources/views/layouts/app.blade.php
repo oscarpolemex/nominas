@@ -136,6 +136,10 @@
                     <a class="nav-link" style="background-color: #5B1E3B" href="{{route('uploadFiles.create')}}">
                         <i class="fa fa-upload"></i> &nbsp;&nbsp;Cargar Documentos</a>
                 </li>
+                <li>
+                    <a class="nav-link" style="background-color: #5B1E3B" href="{{route('eventos.index')}}">
+                        <i class="fa fa-calendar-o"></i> &nbsp;&nbsp;Eventos y Citas</a>
+                </li>
             </ul>
         </nav>
 @endif
@@ -229,5 +233,6 @@
         });
     });
 </script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @yield('scripts')
 </html>

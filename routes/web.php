@@ -43,3 +43,5 @@ Route::get('eliminaServidoresPublicos', 'ServidorPublicoController@deleteServido
 Route::post('eliminaServidoresPublicos', 'ServidorPublicoController@deleteServidoresPublicos')->name('eliminaServidoresPublicos');
 Route::get('recibos/busqueda/{tipo_recibo_id}/{anio}/{consecutivo}/{servidor_id}', 'SolicitudController@busqueda');
 Route::get('recibos/getFile/{id}', 'DocumentoController@getFile');
+Route::resource("eventos", "EventosController")->name("*","eventos");
+Route::resource("citas", "CitasController")->name("*","citas");

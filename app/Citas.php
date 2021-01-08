@@ -5,20 +5,20 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ServidorPublico extends Model
+class Citas extends Model
 {
     use SoftDeletes;
 
-    protected $table = "servidores_publicos";
+    protected $table = "citas";
     protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
 
-    public function documentos()
+    public function servidorPublico()
     {
-        return $this->hasMany(Documento::class);
+        return $this->belongsTo(ServidorPublico::class);
     }
 
-    public function citas()
+    public function eventos()
     {
-        return $this->hasMany(Citas::class);
+        return $this->belongsTo(Eventos::class);
     }
 }

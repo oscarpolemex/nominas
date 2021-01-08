@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Citas;
+use App\Eventos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
@@ -30,7 +32,7 @@ class SolicitudController extends Controller
                     return view('solicitudes.solicitud')->withErrors(["c_electronico" => "Ya se ha enviado la liga previemente"]);
                 } else {
                     $servidor->token = $token;
-                    $expiresAt = Carbon::now()->addMinutes(8);
+                    $expiresAt = Carbon::now()->addMinutes(60);
                     Cache::put($servidor->token, $servidor, $expiresAt);
                 }
                 $liga = asset("/") . "validar_token/" . base64_encode($servidor->token) . "/" . base64_encode($servidor->c_electronico);
@@ -54,12 +56,22 @@ class SolicitudController extends Controller
                 if ($servidor->c_electronico == $correo) {
                     $servidor->documentos = $servidor->documentos->sortByDesc(true)->take(12);
                     $tiporecibo = TipoRecibo::all();
-                    return view('solicitudes.recibos', compact('servidor', 'tiporecibo'));
+                    $evento = Eventos::where("estatus", "!=", 0)->get();
+                    for ($i = 0; $i < count($evento); $i++) {
+                        $cita = Citas::where("eventos_id", $evento[$i]->id)->where("servidor_publico_id", $servidor->id)->first();
+                        if ($cita) {
+                            $evento[$i]->cita = $cita;
+                        } else {
+                            $evento[$i]->cita = null;
+                        }
+                    }
+                    $token = $this->request->token;
+                    return view('solicitudes.recibos', compact('servidor', 'tiporecibo', 'evento', 'token'));
                 } else {
                     return view('solicitudes.solicitud')->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);
                 }
             } else {
-                return view('solicitudes.solicitud')->withErrors(["c_electronico" => "El token caduco, por favor solicita uno"]);
+                return view('solicitudes.solicitud')->withErrors(["c_electronico" => "El token caducó, por favor solicita uno"]);
             }
         } else {
             return view('solicitudes.solicitud')->withErrors(["c_electronico" => "No existe el token, por favor solicita otro"]);
