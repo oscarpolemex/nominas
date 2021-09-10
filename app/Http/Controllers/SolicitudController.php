@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Citas;
-use App\Eventos;
+//use App\Citas;
+//use App\Eventos;
 use App\Mail\Token;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -64,17 +64,17 @@ class SolicitudController extends Controller
                 if ($servidor->c_electronico == $correo) {
                     $servidor->documentos = $servidor->documentos->sortByDesc(true)->take(12);
                     $tiporecibo = TipoRecibo::all();
-                    $evento = Eventos::where("estatus", "!=", 0)->get();
-                    for ($i = 0; $i < count($evento); $i++) {
-                        $cita = Citas::where("eventos_id", $evento[$i]->id)->where("servidor_publico_id", $servidor->id)->first();
-                        if ($cita) {
-                            $evento[$i]->cita = $cita;
-                        } else {
-                            $evento[$i]->cita = null;
-                        }
-                    }
+//                    $evento = Eventos::where("estatus", "!=", 0)->get();
+//                    for ($i = 0; $i < count($evento); $i++) {
+//                        $cita = Citas::where("eventos_id", $evento[$i]->id)->where("servidor_publico_id", $servidor->id)->first();
+//                        if ($cita) {
+//                            $evento[$i]->cita = $cita;
+//                        } else {
+//                            $evento[$i]->cita = null;
+//                        }
+//                    }
                     $token = $this->request->token;
-                    return view('solicitudes.recibos', compact('servidor', 'tiporecibo', 'evento', 'token'));
+                    return view('solicitudes.recibos', compact('servidor', 'tiporecibo', 'token'));
                 } else {
                     return view('solicitudes.solicitud')->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);
                 }
