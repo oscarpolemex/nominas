@@ -204,7 +204,7 @@
                     <form action="{{route('solicitar')}}" method="GET">
                         @csrf
                         <div class="row mb-4 px-3">
-                            <h6 class="mb-0 mr-4 mt-2"><strong>SISTEMA DE NOMINAS</strong></h6>
+                            <h6 class="mb-0 mr-4 mt-2"><strong>PORTAL DE GESTIÓN INTERNA</strong></h6>
                             <div class="facebook text-center mr-3">
                                 <div class="fa fa-facebook"></div>
                             </div>

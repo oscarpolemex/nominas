@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SendConfirm;
+use App\Mail\VerificarRegistro;
 use Illuminate\Http\Request;
 use App\ServidorPublico;
 use Illuminate\Support\Facades\Mail;
@@ -166,6 +167,7 @@ class ServidorPublicoController extends Controller
         $servidorPublico->verificado = true;
         $servidorPublico->save();
         $nombre = $servidorPublico->nombre;
+        Mail::to($this->request->c_electronico)->send(new VerificarRegistro($nombre, $liga));
         Mail::to($servidorPublico->c_electronico)->send(new SendConfirm($nombre));
         return redirect()->route('ServidoresPublicos.index')->with('info', '¡Se ha verificado el registro y se notificó al servidor público!');
     }

@@ -1,21 +1,17 @@
 @component('mail::message')
     <div>
-        <h1>TOKEN DE ACCESO</h1>
-        <strong>Apreciable: {{$servidor->nombre}}</strong>
+        <h1>Correo de registro</h1>
+        <strong>Apreciable: {{$nombre}}</strong>
         <p>
-            Se le informa que el token de acceso que se envía es único, personal, confidencial e intransferibles y
-            deberán
-            ser utilizados única y exclusivamente para las funciones asignadas. La clave de acceso tiene una vigencia de
-            5
-            minutos para que pueda ser utilizada por el usuario y llevar a cabo sus transacciones. Su uso será bajo
-            exclusiva responsabilidad del titular de estos, por lo tanto, por ningún motivo deberá hacerlos del
-            conocimiento
-            de otra(s) persona(s).
-            Ver recibos de nómina
+            A los usuarios del Portal de Gestión Interna
+            Se les informa que las credenciales de acceso, usuario y contraseña son únicos, personales, confidenciales e
+            intransferibles y deberán ser utilizados única y exclusivamente para las funciones asignadas. Su uso será
+            bajo exclusiva responsabilidad del titular de estos, por lo tanto, por ningún motivo deberá hacerlos del
+            conocimiento de otra(s) persona(s).
         </p>
     </div>
-    @component('mail::button', ['url' => $liga])
-        Ver recibos de nómina
+    @component('mail::button', ['url' => asset("/")])
+        Solicitar token
     @endcomponent
     <div>
         <p>
@@ -30,7 +26,7 @@
         </p>
         Si tiene problemas para hacer clic en el botón "Ver recibos de nómina" copie y pegue la URL a continuación en su
         navegador web:
-        {{$liga}}
+        {{asset("/")}}
         <br>
         <p>Consulta el aviso de privacidad <a href="https://cutt.ly/1QMbTSI">aquí</a>.</p>
     </div>

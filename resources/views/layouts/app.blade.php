@@ -111,7 +111,7 @@
         }
 
         .btn-submit {
-            background-color: #9c024c!important;
+            background-color: #9c024c !important;
         }
     </style>
 </head>
@@ -126,7 +126,7 @@
                 <br>
             </div>
             <ul class="list-unstyled components">
-                <h5 align="center">Sistema de Nominas</h5>
+                <h5 align="center">PORTAL DE GESTIÓN INTERNA</h5>
                 <li class="active">
                 <li>
                     <a class="text-light" style="background-color: #9c024c "
@@ -199,20 +199,20 @@
         </nav>    <!-- Page Content  -->
         <div class="resultados" id="resultados"></div>
         <div class="container">
-{{--            @if(count($errors))--}}
-{{--                <div class="container">--}}
-{{--                    <div class="col-md-12">--}}
-{{--                        <div class="alert alert-danger">--}}
-{{--                            <button type="button" class="close" data-dismiss="alert">--}}
-{{--                                &times;--}}
-{{--                            </button>--}}
-{{--                            <ul>--}}
-{{--                                Ocurrio un error al procesar tu petición, intentalo mas tarde!--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            @endif--}}
+            {{--            @if(count($errors))--}}
+            {{--                <div class="container">--}}
+            {{--                    <div class="col-md-12">--}}
+            {{--                        <div class="alert alert-danger">--}}
+            {{--                            <button type="button" class="close" data-dismiss="alert">--}}
+            {{--                                &times;--}}
+            {{--                            </button>--}}
+            {{--                            <ul>--}}
+            {{--                                Ocurrio un error al procesar tu petición, intentalo mas tarde!--}}
+            {{--                            </ul>--}}
+            {{--                        </div>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+            {{--            @endif--}}
             @if(Session::has('info'))
                 <div class="container">
                     <div class="col-md-12">
@@ -238,11 +238,11 @@
     });
 </script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet' />
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet'/>
 <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/es.js"></script>
-<link href='{{asset("js/fullcalendar/main.css")}}' rel='stylesheet' />
+<link href='{{asset("js/fullcalendar/main.css")}}' rel='stylesheet'/>
 <script src="{{asset('js/fullcalendar/main.js')}}"></script>
 @yield('scripts')
 </html>

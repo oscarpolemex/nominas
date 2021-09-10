@@ -40,12 +40,12 @@ class SolicitudController extends Controller
                     Cache::put($servidor->token, $servidor, $expiresAt);
                 }
                 $liga = asset("/") . "validar_token/" . base64_encode($servidor->token) . "/" . base64_encode($servidor->c_electronico);
-                Mail::to($this->request->c_electronico)->send(new Token($servidor, $liga));
+                Mail::to($this->request->c_electronico)->send(new Token($servidor, $liga, $this->request->c_electronico));
                 $this->request->session()->forget("token");
                 $this->request->session()->put("token", base64_encode($servidor->token));
                 $this->request->session()->forget("c_electronico");
                 $this->request->session()->put("c_electronico", base64_encode($servidor->c_electronico));
-                return view('solicitudes.solicitud')->withErrors(["success" => "Se envió un enlace de validación a tu correo electrónico, revisa tu bandeja de entrada e ingresa a la dirección proporcionada."]);
+                return view('solicitudes.solicitud')->withErrors(["success" => "Se envió un enlace de validación a tu correo electrónico, revisa la bandeja de entrada e ingresa y presión el botón \"Ver recibos de nómina.\""]);
             } else {
                 return view('solicitudes.solicitud')->withErrors(["error" => "Su registro aún no ha sido validado. Consulte con su administrador."]);
             }

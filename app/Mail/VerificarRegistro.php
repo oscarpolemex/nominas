@@ -7,25 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-ini_set('memory_limit', '-1');
-
-class Token extends Mailable
+class VerificarRegistro extends Mailable
 {
     use Queueable, SerializesModels;
+
+    public $nombre;
+    public $correo;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public $servidor;
-    public $liga;
-    public $correo;
-
-    public function __construct($servidor, $liga, $correo)
+    public function __construct($nombre, $correo)
     {
-        $this->servidor = $servidor;
-        $this->liga = $liga;
+        $this->nombre = $nombre;
         $this->correo = $correo;
     }
 
@@ -36,9 +32,8 @@ class Token extends Mailable
      */
     public function build()
     {
-        $servidor = $this->servidor;
-        $liga = $this->liga;
+        $nombre = $this->nombre;
         $correo = $this->correo;
-        return $this->markdown('emails.token.token', compact("servidor", "liga", "correo"));
+        return $this->markdown('emails.verificar.verificar', compact('nombre', 'correo'));
     }
 }
