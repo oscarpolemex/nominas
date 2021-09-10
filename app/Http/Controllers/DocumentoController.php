@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Storage;
 class DocumentoController extends Controller
 {
     protected $request;
-    function __construct(Request $request) {
+
+    function __construct(Request $request)
+    {
         $this->request = $request;
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +41,7 @@ class DocumentoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,7 +52,7 @@ class DocumentoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Documento  $documento
+     * @param \App\Documento $documento
      * @return \Illuminate\Http\Response
      */
     public function show(Documento $documento)
@@ -61,7 +63,7 @@ class DocumentoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Documento  $documento
+     * @param \App\Documento $documento
      * @return \Illuminate\Http\Response
      */
     public function edit(Documento $documento)
@@ -72,8 +74,8 @@ class DocumentoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Documento  $documento
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Documento $documento
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Documento $documento)
@@ -84,16 +86,21 @@ class DocumentoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Documento  $documento
+     * @param \App\Documento $documento
      * @return \Illuminate\Http\Response
      */
     public function destroy(Documento $documento)
     {
         //
     }
-    
-    function getFile($id){
+
+    function getFile($id)
+    {
         $documento = Documento::find($this->request->id);
-        return Storage::download($documento->ruta,$documento->nombre);
+        if (Storage::exists($documento->ruta)) {
+            return Storage::download($documento->ruta, $documento->nombre);
+        } else {
+            return redirect()->back()->withErrors(["error" => "error"]);
+        }
     }
 }

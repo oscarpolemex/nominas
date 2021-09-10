@@ -107,6 +107,15 @@
 @endsection
 @section('scripts')
     <script>
+        $(document).ready(function () {
+            @if($errors->has('error'))
+            swal({
+                title: "No se encontró el recibo. Consulte con su administrador",
+                icon: "error",
+                buttons: true,
+            });
+            @endif
+        });
         $(".cita").click(function () {
             let form = $(this).data('id');
             swal({
