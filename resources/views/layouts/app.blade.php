@@ -111,7 +111,7 @@
         }
 
         .btn-submit {
-            background-color: #9c024c;
+            background-color: #9c024c!important;
         }
     </style>
 </head>
