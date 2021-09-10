@@ -45,3 +45,6 @@ Route::get('recibos/busqueda/{tipo_recibo_id}/{anio}/{consecutivo}/{servidor_id}
 Route::get('recibos/getFile/{id}', 'DocumentoController@getFile');
 Route::resource("eventos", "EventosController")->name("*","eventos");
 Route::resource("citas", "CitasController")->name("*","citas");
+Route::resource("solicitud_prestamos", "SolicitudPrestamoController")->name("*","solicitud_prestamos");
+Route::resource("revision_prestamos", "RevisionPrestamosController")->name("*","revision_prestamos");
+Route::get("get-solicitud/{id}", "RevisionPrestamosController@getFile");

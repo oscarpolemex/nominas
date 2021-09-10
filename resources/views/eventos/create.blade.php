@@ -7,7 +7,7 @@
             </div>
             <div class="card-body">
                 {!! Form::open(['route'=>'eventos.store', 'method'=>'POST', 'files' => true, 'role' => 'form', 'id' => 'formServidorPublico']) !!}
-                @include("eventos.form")
+                    @include("eventos.form")
                 {!! Form::close() !!}
             </div>
         </div>

@@ -3,58 +3,10 @@
 
     <div class="container mt-2">
         <div class="card">
-            @if(count($evento))
-                <div class="card-header">
-                    <h3>Eventos</h3>
-                </div>
-                <div class="card-body">
-                    <div id="accordion">
-                        @foreach($evento as $item)
-                            <div class="card">
-                                <div class="card-header" id="heading{{$item->id}}">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link" data-toggle="collapse"
-                                                data-target="#collapse{{$item->id}}"
-                                                aria-expanded="true" aria-controls="collapse{{$item->id}}">
-                                            {{$item->nombre_evento}}
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="collapse{{$item->id}}" class="collapse" aria-labelledby="heading{{$item->id}}"
-                                     data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p class="text-justify"
-                                           style="font-size: 15px">
-                                            {!! nl2br(e($item->descripcion_evento), false) !!}</p>
-                                        @if($item->cita == null)
-                                            @if($item->estatus == 1)
-                                                {!! Form::open(['route'=>['citas.update', $token], 'method'=>'PUT', 'files' => true, 'role' => 'form',"id" => "cita".$item->id]) !!}
-                                                {!! Form::text("evento",$item->id,["hidden"]) !!}
-                                                <a type="submit" class="btn btn-sm btn-primary cita"
-                                                   data-id="cita{{$item->id}}">Generar
-                                                    cita</a>
-                                                {!! Form::close() !!}
-                                            @else
-                                                <h5>¡El evento no admite más citas!</h5>
-                                                <h6>Espere el próximo</h6>
-                                            @endif
-                                        @else
-                                            <h5>Su cita ha sido generada para el
-                                                día <strong>{{date_format(new DateTime($item->cita->fecha_hora_cita),"d/m/Y")}}</strong>
-                                                a las <strong>{{date_format(new DateTime($item->cita->fecha_hora_cita),"h:i A")}}</strong></h5>
-                                        @endif
-
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
             <div class="card-header bg-info  border-0 py-3 d-flex align-items-center"
                  style="background-color:#F1F1F1 !important;">
                 <div class="col-11">
-                    <h3 class="card-title mb-0">ARCHIVOS</h3>
+                    <h3 class="card-title mb-0">RECIBOS</h3>
                 </div>
                 <div class="1">
                     <button class="btn btn-primary mr-5" id='btnBuscar'>
@@ -64,7 +16,6 @@
             </div>
             <div class="card-body">
                 @if($servidor->documentos)
-
                     <table class="table" id='tableRecibos'>
                         <thead>
                         <tr>

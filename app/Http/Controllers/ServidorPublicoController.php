@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SendConfirm;
-use App\Mail\SendToken;
 use Illuminate\Http\Request;
 use App\ServidorPublico;
 use Illuminate\Support\Facades\Mail;

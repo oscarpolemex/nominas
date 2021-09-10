@@ -6,14 +6,14 @@
                  style="background-color:#F1F1F1 !important;">
 
                 @if(auth()->user())
-                    <h3 class="card-title mb-0">AGREGAR</h3>
+                    <h3 class="card-title mb-0">Registro de nuevo usuario</h3>
                 @else
                     <div class="float-left">
-                        <h3 class="card-title mb-0">REGISTRARSE</h3>
+                        <h3 class="card-title mb-0">Registro de nuevo usuario</h3>
                     </div>
                     <div class="float-right">
                         <h6>
-                            <span class="badge badge-success badge-lg ml-auto px-4" data-toggle="collapse"
+                            <span class="badge badge-secondary badge-lg ml-auto px-4" data-toggle="collapse"
                                   href="#collapseExample" role="button" aria-expanded="false"
                                   aria-controls="collapseExample">
                                 AYUDA
@@ -23,7 +23,7 @@
                 @endif
             </div>
             <div class="collapse" id="collapseExample">
-                <div class="card-body" style="font-size: 14px; color: #000000;!important;">
+                <div class="card-body" style="font-size: 14px; color: #000000!important;">
                     <div class="text-justify"> La Dirección de Administración y Desarrollo de Personal le sugiere
                         que antes de
                         comenzar el llenado del formulario, lea atentamente este instructivo. Todos los

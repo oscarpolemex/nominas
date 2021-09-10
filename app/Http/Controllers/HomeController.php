@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Documento;
+use App\ServidorPublico;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $solicitudes = ServidorPublico::where("verificado", 0)->get()->count();
+        $validado = ServidorPublico::where("verificado", 1)->get()->count();
+        $archivos = Documento::all()->count();
+        return view('home', compact("solicitudes","validado", "archivos"));
     }
 }

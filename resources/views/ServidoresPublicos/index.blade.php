@@ -5,7 +5,7 @@
             <div class="card-header bg-info  border-0 py-3 d-flex align-items-center"
                  style="background-color:#F1F1F1 !important;">
                 <div class="col-11">
-                    <h3 class="card-title mb-0">SERVIDORES PUBLICOS</h3>
+                    <h3 class="card-title mb-0">Listado de servidores públicos</h3>
                 </div>
                 <div class="1">
                     <button class="btn btn-primary mr-5" onclick="location.href='{{route('ServidoresPublicos.create')}}'">
@@ -62,7 +62,7 @@
                     "render": function (data, type, row) {
                         var ruta = 'ServidoresPublicos/'+row.id+'/edit';
                         html ='<div style="display: inline-block;">';
-                        html +='    <a href="'+ruta+'" class="btn btn-primary" style="border-color: #5b1e3b;background-color: #5b1e3b;">';
+                        html +='    <a href="'+ruta+'" class="btn btn-primary" style="border-color: #9c024c ;background-color: #9c024c ;">';
                         html +='        <i class="fa fa-pencil-alt"></i>Editar';
                         html +='    </a>';
                         html +='</div>'

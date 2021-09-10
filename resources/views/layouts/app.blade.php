@@ -3,7 +3,7 @@
 <style>
     btn:link {
         text-decoration: none !important;
-        color: #5B1E3B !important;
+        color: #9c024c !important;
     }
 
     .contact {
@@ -47,6 +47,10 @@
     .panel-danger {
         padding: 10px;
         background-color: #E6D0D4 !important;
+    }
+
+    .btn-submit {
+        background-color: #9c024c;
     }
 </style>
 
@@ -105,6 +109,10 @@
         .btn-action {
             background-color: transparent !important;
         }
+
+        .btn-submit {
+            background-color: #9c024c;
+        }
     </style>
 </head>
 <body>
@@ -112,50 +120,46 @@
 <div class="wrapper">
     <!-- Sidebar  -->
     @if(auth()->user())
-        <nav id="sidebar" style="background-color: #5B1E3B">
-            <div class="sidebar-header" style="background-color: #5B1E3B">
-                <img src="{{url('IMG/Logo.png')}}" class="img" width="90%">
+        <nav id="sidebar" style="background-color: #9c024c ">
+            <div class="sidebar-header" style="background-color: #9c024c ">
+                <img src="{{url('IMG/logo.svg')}}" class="img" width="90%">
                 <br>
             </div>
             <ul class="list-unstyled components">
                 <h5 align="center">Sistema de Nominas</h5>
                 <li class="active">
                 <li>
-                    <a class="nav-link" style="background-color: #5B1E3B" href="{{route('ServidoresPublicos.index')}}">
-                        <i class="fa fa-search"></i> &nbsp;&nbsp;Buscar Registro</a>
+                    <a class="text-light" style="background-color: #9c024c "
+                       href="{{route('ServidoresPublicos.index')}}">
+                        <i class="fa fa-search"></i> &nbsp;&nbsp;<strong>Buscar registro</strong></a>
                 </li>
                 <li>
-                    <a class="nav-link" style="background-color: #5B1E3B" href="{{route('ServidoresPublicos.create')}}">
-                        <i class="fa fa-pencil"></i> &nbsp;&nbsp;Nuevo Registro</a>
+                    <a class="text-light" style="background-color: #9c024c "
+                       href="{{route('ServidoresPublicos.create')}}">
+                        <i class="fa fa-pencil"></i> &nbsp;&nbsp;<strong>Nuevo registro</strong></a>
                 </li>
                 <li>
-                    <a class="nav-link" style="background-color: #5B1E3B" href="{{route('eliminaServidoresPublicos')}}">
-                        <i class="fa fa-trash-o"></i> &nbsp;&nbsp;Eliminar servidores publicos</a>
+                    <a class="text-light" style="background-color: #9c024c "
+                       href="{{route('eliminaServidoresPublicos')}}">
+                        <i class="fa fa-trash-o"></i> &nbsp;&nbsp;<strong>Eliminar servidores publicos</strong></a>
                 </li>
                 <li>
-                    <a class="nav-link" style="background-color: #5B1E3B" href="{{route('uploadFiles.create')}}">
-                        <i class="fa fa-upload"></i> &nbsp;&nbsp;Cargar Documentos</a>
-                </li>
-                <li>
-                    <a class="nav-link" style="background-color: #5B1E3B" href="{{route('eventos.index')}}">
-                        <i class="fa fa-calendar-o"></i> &nbsp;&nbsp;Eventos y Citas</a>
+                    <a class="text-light" style="background-color: #9c024c " href="{{route('uploadFiles.create')}}">
+                        <i class="fa fa-upload"></i> &nbsp;&nbsp;<strong>Cargar documentos</strong></a>
                 </li>
             </ul>
         </nav>
 @endif
 <!-- Page Content  -->
     <div id="content">
-        <nav class="navbar navbar-expand-lg" style="background-color: #682244">
+        <nav class="navbar navbar-expand-lg" style="background-color: #9c024c ">
             @if(!auth()->user())
-                <div class="sidebar-header">
-                    <img src="{{url('images/Logo.png')}}" class="img" width="20%">
-                    <br>
-                </div>
+                <img src="{{asset('IMG/logo_SAF_Legislatura_2.svg')}}" class="img" width="20%">
             @endif
             @if(auth()->user())
                 <div class="container-fluid">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fa fa-bars"></i>
+                    <button type="button" id="sidebarCollapse" class="btn btn-submit">
+                        <i class="fa fa-bars text-light"></i>
                         <span></span>
                     </button>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
@@ -167,7 +171,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto nav-flex-icons">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333"
+                                <a class="text-light dropdown-toggle" id="navbarDropdownMenuLink-333"
                                    data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF; cursor: default">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -177,11 +181,11 @@
                                 <div class="dropdown-menu dropdown-menu-right dropdown-default"
                                      aria-labelledby="navbarDropdownMenuLink-333"
                                      style="color: #FFFFFF;">
-                                    <!--<a class="dropdown-item" href="updatepass.php">Cambio de contraseña</a>-->
+                                    <!--<a class="dropdown-item" href="updatepass.php">Cambio de contrase帽a</a>-->
                                     <a class="dropdown-item" style="cursor: pointer"
                                        onclick="$('#formLogout').submit();">
                                         <i class="icon fa fa-power-off text-dark"></i>
-                                        <i class="text-dark">Cerrar Sesión</i>
+                                        <i class="text-dark">Cerrar sesión</i>
                                     </a>
                                     <form method="POST" id="formLogout" hidden action="{{route('logout')}}">
                                         {{csrf_field()}}
@@ -203,7 +207,7 @@
                                 &times;
                             </button>
                             <ul>
-                                ¡Ocurrio un error al procesar tu petición, intentalo mas tarde!
+                                Ocurrio un error al procesar tu petición, intentalo mas tarde!
                             </ul>
                         </div>
                     </div>
@@ -233,6 +237,5 @@
         });
     });
 </script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @yield('scripts')
 </html>

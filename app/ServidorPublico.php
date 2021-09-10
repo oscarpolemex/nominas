@@ -21,4 +21,9 @@ class ServidorPublico extends Model
     {
         return $this->hasMany(Citas::class);
     }
+    
+    public function solicitudPrestamos()
+    {
+        return $this->hasMany(SolicitudPrestamo::class);
+    }
 }
