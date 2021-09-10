@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,9 +22,30 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a75bcf0-8ce6-4b60-9148-46fc431116e4" name="Default Changelist" comment="PUNTO DECIMAL">
+    <list default="true" id="1a75bcf0-8ce6-4b60-9148-46fc431116e4" name="Default Changelist" comment="Cambios plantilla de nominas">
+      <change afterPath="$PROJECT_DIR$/app/Mail/Token.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nominas.clpprj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nominas_clcs.csprj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/token/token.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/button.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/panel.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/subcopy.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/table.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/themes/default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/button.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/message.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/panel.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/subcopy.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/table.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/ServidoresPublicos/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ServidoresPublicos/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SolicitudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SolicitudController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +59,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/UploadFilesController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/resources/views/solicitudPrestamos/create.blade.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/routes/web.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/resources/views/solicitudPrestamos/index.blade.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -156,8 +187,13 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bienes" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -189,6 +225,17 @@
       <workItem from="1604077833936" duration="15180000" />
       <workItem from="1604681400078" duration="6706000" />
       <workItem from="1604696237396" duration="607000" />
+      <workItem from="1609000800309" duration="33807000" />
+      <workItem from="1609343317121" duration="13280000" />
+      <workItem from="1609791279818" duration="292000" />
+      <workItem from="1609870736248" duration="9850000" />
+      <workItem from="1610040042915" duration="29069000" />
+      <workItem from="1610384400944" duration="1049000" />
+      <workItem from="1612547370767" duration="22204000" />
+      <workItem from="1612802013913" duration="10799000" />
+      <workItem from="1612890004855" duration="622000" />
+      <workItem from="1627742359976" duration="428000" />
+      <workItem from="1631224920188" duration="16415000" />
     </task>
     <task id="LOCAL-00001" summary="- Validación correo&#10;- Cambio de Logo&#10;- Sección de Ayuda">
       <created>1603746674821</created>
@@ -253,7 +300,28 @@
       <option name="project" value="LOCAL" />
       <updated>1604690848580</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Eventos y citas">
+      <created>1610134338271</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1610134338271</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Cambios plantilla de nominas">
+      <created>1631296165643</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1631296165643</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Cambios plantilla de nominas">
+      <created>1631296720064</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1631296720064</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,37 +349,9 @@
     <MESSAGE value="Validacion del registro" />
     <MESSAGE value="Redireccionamiento, falta de ortografia" />
     <MESSAGE value="Falta de ortografia" />
+    <MESSAGE value="Eventos y citas" />
     <MESSAGE value="PUNTO DECIMAL" />
-    <option name="LAST_COMMIT_MESSAGE" value="PUNTO DECIMAL" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="438" y="188" key="#Notifications" timestamp="1604683427662">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="438" y="188" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1604683427662" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604089385045">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1604089385045" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604694969440">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604694969440" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1604690862428">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1604690862428" />
-    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1604086969242">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1604086969242" />
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604683418559">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1604683418559" />
-    <state x="405" y="276" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604086994970">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="405" y="276" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1366.728@0.0.1366.728" timestamp="1604086994970" />
+    <MESSAGE value="Cambios plantilla de nominas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios plantilla de nominas" />
   </component>
 </project>

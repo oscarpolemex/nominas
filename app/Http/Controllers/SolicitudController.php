@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Citas;
 use App\Eventos;
+use App\Mail\Token;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
@@ -12,18 +13,21 @@ use App\ServidorPublico;
 use App\TipoRecibo;
 use App\Mail\SendToken;
 
-class SolicitudController extends Controller {
+class SolicitudController extends Controller
+{
 
     protected $request;
 
-    public function __construct(Request $request) {
+    public function __construct(Request $request)
+    {
         $this->request = $request;
         if ($this->request->is('solicitud/*')) {
             $this->middleware('CheckToken');
         }
     }
 
-    public function enviarToken() {
+    public function enviarToken()
+    {
         $servidor = ServidorPublico::where('c_electronico', $this->request->c_electronico)->first();
         if ($servidor != null) {
             if ($servidor->verificado == true) {
@@ -36,7 +40,7 @@ class SolicitudController extends Controller {
                     Cache::put($servidor->token, $servidor, $expiresAt);
                 }
                 $liga = asset("/") . "validar_token/" . base64_encode($servidor->token) . "/" . base64_encode($servidor->c_electronico);
-                Mail::to($this->request->c_electronico)->send(new SendToken($servidor, $liga));
+                Mail::to($this->request->c_electronico)->send(new Token($servidor, $liga));
                 $this->request->session()->forget("token");
                 $this->request->session()->put("token", base64_encode($servidor->token));
                 $this->request->session()->forget("c_electronico");
@@ -50,7 +54,8 @@ class SolicitudController extends Controller {
         }
     }
 
-    public function validarToken() {
+    public function validarToken()
+    {
         if ($this->request->token != "") {
             $token = base64_decode($this->request->token);
             $correo = base64_decode($this->request->c_electronico);
@@ -81,7 +86,8 @@ class SolicitudController extends Controller {
         }
     }
 
-    public function busqueda() {
+    public function busqueda()
+    {
         $servidor = ServidorPublico::find($this->request->servidor_id);
         if ($servidor != null) {
             foreach ($servidor->documentos as $documento) {
@@ -105,14 +111,16 @@ class SolicitudController extends Controller {
         return response('No se encuentro al servidor público', 500);
     }
 
-    private function random_number($length) {
+    private function random_number($length)
+    {
         return join('', array_map(function ($value) {
-                    return $value == 1 ? mt_rand(1, 9) : mt_rand(0, 9);
-                }, range(1, $length)));
+            return $value == 1 ? mt_rand(1, 9) : mt_rand(0, 9);
+        }, range(1, $length)));
     }
 
-    public function Recibos($crit) {
-        
+    public function Recibos($crit)
+    {
+
     }
 
 }
