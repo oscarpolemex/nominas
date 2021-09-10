@@ -6,9 +6,10 @@
             <div class="card-header bg-info  border-0 py-3 d-flex align-items-center"
                  style="background-color:#F1F1F1 !important;">
                 <div class="col-11">
-                    <h3 class="card-title mb-0">Recibos de nómina</h3>
+                    <h3 class="card-title mb-0" style="line-height: 12px;">Portal de Gestión Interna</h3><br>
+                    <h4 class="card-title mb-0">Comprobantes de percepciones y deducciones.</h4>
                 </div>
-                <div class="1">
+                <div class="col-1">
                     <button class="btn btn-primary mr-5" id='btnBuscar'>
                         <i class="fa fa-search"></i>
                     </button>
@@ -16,23 +17,24 @@
             </div>
             <div class="card-body">
                 @if($servidor->documentos)
-                    <table class="table" id='tableRecibos'>
+                    <table class="table" id='tableRecibos' style="font-size: 17px">
                         <thead>
                         <tr>
-                            <th scope="col"> Tipo de Recibo</th>
-                            <th scope="col"> Número de Recibo</th>
-                            <th scope="col"> Fecha</th>
-                            <th scope="col"> Documento</th>
+                            <th scope="col" class="text-center"> Tipo de Recibo</th>
+                            <th scope="col" class="text-center"> Número de Recibo</th>
+                            <th scope="col" class="text-center"> Fecha</th>
+                            <th scope="col" class="text-center"> Documento</th>
+                            <th scope="col" class="text-center"> Descargar</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($servidor->documentos as $item)
                             <tr>
-                                <td>{{$item->recibo->tipoRecibo->nombre}}</td>
-                                <td>{{$item->recibo->consecutivo}}</td>
-                                <td>{{$item->created_at}}</td>
-                                <td>{{$item->nombre}}</td>
-                                <td>
+                                <td class="text-center">{{$item->recibo->tipoRecibo->nombre}}</td>
+                                <td class="text-center">{{$item->recibo->consecutivo}}</td>
+                                <td class="text-center">{{$item->created_at}}</td>
+                                <td class="text-center">{{$item->nombre}}</td>
+                                <td class="text-center">
                                     <a class="btn btn-success btn-sm" href="/recibos/getFile/{{$item->id}}"><i
                                             class="fa fa-download"></i></a>
                                 </td>

@@ -169,11 +169,6 @@ a.editar:hover {
 }
 
 
-body {
-    background-color: #E4E4E4 !important;
-    font-size: 10px !important;
-}
-
 .error, .success, .info, .notice, .despliega, .otro, .mostrar, .busqueda, .tecnico, .sistemas {
     display: block;
     padding: 10px 20px 10px 44px;

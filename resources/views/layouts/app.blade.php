@@ -113,6 +113,41 @@
         .btn-submit {
             background-color: #9c024c !important;
         }
+
+        @if(!auth()->user())
+            body {
+            background-image: url({{asset("/IMG/background1.svg")}}) !important;
+            font-size: 10px !important;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        #content {
+            padding: 0px !important;
+        }
+
+
+        .table th {
+            padding: 0px!important;;
+            vertical-align: 0px!important;;
+            border-top: 0px!important;;
+        }
+
+        .table td {
+            vertical-align: 0px!important;;
+            border-top: 0px!important;;
+        }
+
+        *, ::before, ::after {
+            box-sizing: revert!important; ;
+        }
+
+        @else
+        body {
+            background-color: #E4E4E4 !important;
+            font-size: 10px !important;
+        }
+        @endif
     </style>
 </head>
 <body>

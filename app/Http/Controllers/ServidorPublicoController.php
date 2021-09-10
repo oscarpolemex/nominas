@@ -167,8 +167,7 @@ class ServidorPublicoController extends Controller
         $servidorPublico->verificado = true;
         $servidorPublico->save();
         $nombre = $servidorPublico->nombre;
-        Mail::to($this->request->c_electronico)->send(new VerificarRegistro($nombre, $liga));
-        Mail::to($servidorPublico->c_electronico)->send(new SendConfirm($nombre));
+        Mail::to($servidorPublico->c_electronico)->send(new VerificarRegistro($nombre, $servidorPublico->c_electronico));
         return redirect()->route('ServidoresPublicos.index')->with('info', '¡Se ha verificado el registro y se notificó al servidor público!');
     }
 

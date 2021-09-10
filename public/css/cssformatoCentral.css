@@ -36,10 +36,6 @@
         color: #DDD;
     }
 
-    body{
-        background-color: #DADADA;
-
-    }
     h3 {
         color:#9c024c ;
     }
@@ -95,12 +91,6 @@
     a.editar:active {color:#e1e1e1 !important;}
     a.editar:hover {color:#e1e1e1 !important; text-decoration: none; }
 
-
-
-    body{
-        background-color:#E4E4E4 !important;
-        font-size:10px !important;
-    }
     .error, .success, .info, .notice, .despliega, .otro,.mostrar, .busqueda,.tecnico ,.sistemas {
         display: block;
         padding: 10px 20px 10px 44px;
