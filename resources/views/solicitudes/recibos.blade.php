@@ -6,7 +6,7 @@
             <div class="card-header bg-info  border-0 py-3 d-flex align-items-center"
                  style="background-color:#F1F1F1 !important;">
                 <div class="col-11">
-                    <h3 class="card-title mb-0">RECIBOS</h3>
+                    <h3 class="card-title mb-0">Recibos de nómina</h3>
                 </div>
                 <div class="1">
                     <button class="btn btn-primary mr-5" id='btnBuscar'>
