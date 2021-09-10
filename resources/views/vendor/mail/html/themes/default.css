@@ -36,6 +36,9 @@ a img {
 }
 
 /* Typography */
+.text-justify {
+    text-align: justify !important;
+}
 
 h1 {
     color: #3d4852;
@@ -80,17 +83,10 @@ img {
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
     -premailer-width: 100%;
-    background-color: #8F0044;
+    background-color: #960048;
     margin: 0;
     padding: 0;
     width: 100%;
-}
-
-h1, h2, h3, h4, h5 {
-    color: #8F0044;
-}
-p{
-    text-align: justify;
 }
 
 .content {
@@ -119,8 +115,7 @@ p{
 /* Logo */
 
 .logo {
-    height: 75px;
-    width: 75px;
+    width: 40%;
 }
 
 /* Body */
@@ -129,9 +124,9 @@ p{
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
     -premailer-width: 100%;
-    background-color: #8F0044;
-    border-bottom: 1px solid #8F0044;
-    border-top: 1px solid #8F0044;
+    background-color: #edf2f7;
+    border-bottom: 1px solid #edf2f7;
+    border-top: 1px solid #edf2f7;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -148,7 +143,7 @@ p{
     box-shadow: 0 2px 0 rgba(0, 0, 150, 0.025), 2px 4px 0 rgba(0, 0, 150, 0.015);
     margin: 0 auto;
     padding: 0;
-    width: 1000px;
+    width: 900px;
 }
 
 /* Subcopy */
@@ -238,20 +233,20 @@ p{
 
 .button-blue,
 .button-primary {
-    background-color: #8F0044;
-    border-bottom: 8px solid #8F0044;
-    border-left: 18px solid #8F0044;
-    border-right: 18px solid #8F0044;
-    border-top: 8px solid #8F0044;
+    background-color: #2d3748;
+    border-bottom: 8px solid #2d3748;
+    border-left: 18px solid #2d3748;
+    border-right: 18px solid #2d3748;
+    border-top: 8px solid #2d3748;
 }
 
 .button-green,
 .button-success {
-    background-color: #48bb78;
-    border-bottom: 8px solid #48bb78;
-    border-left: 18px solid #48bb78;
-    border-right: 18px solid #48bb78;
-    border-top: 8px solid #48bb78;
+    background-color: #960048;
+    border-bottom: 8px solid #960048;
+    border-left: 18px solid #960048;
+    border-right: 18px solid #960048;
+    border-top: 8px solid #960048;
 }
 
 .button-red,
@@ -266,12 +261,12 @@ p{
 /* Panels */
 
 .panel {
-    border-left: #8F0044 solid 4px;
+    border-left: #2d3748 solid 4px;
     margin: 21px 0;
 }
 
 .panel-content {
-    background-color: #8F0044;
+    background-color: #edf2f7;
     color: #718096;
     padding: 16px;
 }
@@ -293,4 +288,13 @@ p{
 
 .break-all {
     word-break: break-all;
+}
+
+
+h1, h2, h3, h4, h5 {
+    color: #8F0044;
+}
+
+p {
+    text-align: justify;
 }
