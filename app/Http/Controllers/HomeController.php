@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Documento;
 use App\ServidorPublico;
 use Illuminate\Http\Request;
+ini_set('memory_limit', '-1');
 
 class HomeController extends Controller
 {
