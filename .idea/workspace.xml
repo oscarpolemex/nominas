@@ -22,30 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a75bcf0-8ce6-4b60-9148-46fc431116e4" name="Default Changelist" comment="Cambios plantilla de nominas">
-      <change afterPath="$PROJECT_DIR$/app/Mail/Token.php" afterDir="false" />
+    <list default="true" id="1a75bcf0-8ce6-4b60-9148-46fc431116e4" name="Default Changelist" comment="Recibo de nominas">
       <change afterPath="$PROJECT_DIR$/nominas.clpprj" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/nominas_clcs.csprj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/emails/token/token.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/button.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/footer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/layout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/message.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/panel.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/subcopy.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/table.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/html/themes/default.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/button.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/footer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/layout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/message.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/panel.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/subcopy.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/mail/text/table.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SolicitudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SolicitudController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/IMG/logo_SAF_Legislatura_2.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +215,7 @@
       <workItem from="1612802013913" duration="10799000" />
       <workItem from="1612890004855" duration="622000" />
       <workItem from="1627742359976" duration="428000" />
-      <workItem from="1631224920188" duration="16415000" />
+      <workItem from="1631224920188" duration="17048000" />
     </task>
     <task id="LOCAL-00001" summary="- Validación correo&#10;- Cambio de Logo&#10;- Sección de Ayuda">
       <created>1603746674821</created>
@@ -321,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631296720064</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Recibo de nominas">
+      <created>1631300409667</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1631300409667</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,6 +339,7 @@
     <MESSAGE value="Eventos y citas" />
     <MESSAGE value="PUNTO DECIMAL" />
     <MESSAGE value="Cambios plantilla de nominas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambios plantilla de nominas" />
+    <MESSAGE value="Recibo de nominas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Recibo de nominas" />
   </component>
 </project>
