@@ -138,9 +138,9 @@
             border-top: 0px!important;;
         }
 
-        *, ::before, ::after {
-            box-sizing: revert!important; ;
-        }
+        /**, ::before, ::after {*/
+        /*    box-sizing: revert!important; ;*/
+        /*}*/
 
         @else
         body {

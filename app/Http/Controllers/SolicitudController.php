@@ -62,7 +62,7 @@ class SolicitudController extends Controller
             if (Cache::has($token)) {
                 $servidor = Cache::get($token);
                 if ($servidor->c_electronico == $correo) {
-                    $servidor->documentos = $servidor->documentos->sortByDesc(true)->take(12);
+                    $servidor->documentos = $servidor->documentos->sortByDesc("id")->take(12);
                     $tiporecibo = TipoRecibo::all();
 //                    $evento = Eventos::where("estatus", "!=", 0)->get();
 //                    for ($i = 0; $i < count($evento); $i++) {
