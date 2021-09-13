@@ -204,7 +204,7 @@
                     <form action="{{route('solicitar')}}" method="GET">
                         @csrf
                         <div class="row mb-4 px-3">
-                            <h6 class="mb-0 mr-4 mt-2"><strong>PORTAL DE GESTIÓN INTERNA</strong></h6>
+                            <h6 class="mb-0 mr-4 mt-2"><strong>Portal de Gestión Interna</strong></h6>
                             <div class="facebook text-center mr-3">
                                 <div class="fa fa-facebook"></div>
                             </div>
@@ -224,7 +224,7 @@
                             <div class="line"></div>
                         </div>
                         <div class="row px-3"><label class="mb-1">
-                                <h6 class="mb-0 text-sm"><strong>CORREO ELECTRÓNICO:</strong></h6>
+                                <h6 class="mb-0 text-sm"><strong>Correo electrónico:</strong></h6>
                             </label>
                             <input type="text" class="form-control" name="c_electronico" id="c_electronico"
                                    value="{{ old('c_electronico') }}" placeholder="P. EJ. XX@YY.COM" required autofocus>
@@ -233,6 +233,8 @@
                         </div>
                         <div class="row mb-3 px-3">
                             <button type="submit" class="btn btn-blue text-center">Solicitar</button>
+                            <a href="{{route("createServidorPublico")}}" style="color: #96124b;"
+                               class="btn text-center">Registro de usuarios</a>
                         </div>
                         <!-- <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a class="text-danger ">Register</a></small> </div> -->
                     </form>
@@ -249,9 +251,17 @@
                 </div>
             </div>
         </div>
-        <div class="bg-blue py-4">
-            <small class="ml-4 ml-sm-5 mb-2" style="text-align: center;">Av. Independencia No. 102, Col. Centro, C.P.
-                50000, Toluca México, Estado de México</small>
+        <div class="bg-blue py-4 text-center">
+            <small>
+                Av. Independencia Ote. No. 102, Col. Centro,
+                C.P. 50000,<br>
+                Toluca México, Estado de México.<br>
+                Conmutador (722) 279-6400 Ext. 5185 y 5291<br>
+                WhatsApp: <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                <a class="btn text-center"
+                   href="https://api.whatsapp.com/send?phone=+5217228227748&amp;text=Hola tengo una pregunta">
+                    <img src="{{asset("/IMG/whatsapp.png")}}" width="17px"> 722 822 77 48</a>
+            </small>
         </div>
     </div>
 </div>

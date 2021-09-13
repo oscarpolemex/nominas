@@ -51,35 +51,40 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Busqueda de Recibos</h5>
+                    <h5 class="modal-title">Búsqueda de comprobantes de percepciones y deducciones.</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <div class='row'>
-                            <div class="form-group col-md-4">
-                                <label for='tipo_recibo_id'> Tipo de recibo </label>
-                                <select class="form-control" id='tipo_recibo_id'>
-                                    <option value=''>Selecciona un tipo</option>
-                                    @foreach($tiporecibo as $tipo)
-                                        <option value='{{$tipo->id}}'>{{$tipo->nombre}}</option>
-                                    @endforeach
-                                </select>
+                        <form id="form-busqueda">
+                            @csrf
+                            <input type="text" name="servidor_id" value="{{$servidor->id}}" hidden>
+                            <div class='row'>
+                                <div class="form-group col-md-4">
+                                    <label for='anio'> Año de recibo </label>
+                                    <input type='text' id='anio' name="anio" class="form-control"/>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for='tipo_recibo_id'> Tipo de recibo </label>
+                                    <select class="form-control" id='tipo_recibo_id' name="tipo_recibo_id">
+                                        <option value=''>Selecciona un tipo</option>
+                                        @foreach($tiporecibo as $tipo)
+                                            <option value='{{$tipo->id}}'>{{$tipo->nombre}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for='numero'> Numero de recibo </label>
+                                    <input type='text' id='numero' name="numero" class="form-control"/>
+                                </div>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for='anio'> Año de recibo </label>
-                                <input type='text' id='anio' class="form-control"/>
+                            <div class='col-md-12' align='center'>
+                                <input type='button' class='btn btn-primary' id='btnBusqueda' value='Busqueda'/>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for='numero'> Numero de recibo </label>
-                                <input type='text' id='numero' class="form-control"/>
-                            </div>
-                        </div>
-                        <div class='col-md-12' align='center'>
-                            <input type='button' class='btn btn-primary' id='btnBusqueda' value='Busqueda'/>
-                        </div>
+                        </form>
                         <br>
                         <div class='col-md-12'>
                             <div class="table-responsive">
@@ -136,42 +141,37 @@
             $('#modalb').modal('show')
         })
         $('#btnBusqueda').on('click', function () {
-            if ($('#tipo_recibo_id').val() != '') {
-                if ($('#anio').val() != '') {
-                    if ($('#numero').val() != '') {
-                        $.ajax({
-                            url: '/recibos/busqueda/' + $('#tipo_recibo_id').val() + '/' + $('#anio').val() + '/' + $('#numero').val() + "/" + '{{$servidor->id}}',
-                            async: true,
-                            type: 'GET',
-                            success: function (data) {
-                                var html = '';
-                                html += '<tr>';
-                                html += '    <td>' + data.recibo.nombre + '</td>';
-                                html += '    <td>' + data.recibo.consecutivo + '</td>';
-                                html += '    <td>' + data.created_at + '</td>';
-                                html += '    <td>';
-                                html += '        <a class="btn btn-success btn-sm" href="/recibos/getFile/' + data.id + '"><i class="fa fa-download"></i></a>';
-                                html += '    </td>';
-                                html += '</tr>';
-                                $("#tableBusqueda tbody").html(html);
-                            }, error: function (data) {
-                                var html = '';
-                                html += '<tr>';
-                                html += '<td colspan="5"><h3 id="labelError" class="text-center" ></td>';
-                                html += '</tr>'
-                                $("#tableBusqueda tbody").html(html);
-                                $("#labelError").text(data.responseText);
-                            }
+            if ($('#tipo_recibo_id').val() !== '' || $('#anio').val() !== '' || $('#numero').val() != '') {
+                $.ajax({
+                    url: '/recibos/busqueda/',
+                    async: true,
+                    data: $("#form-busqueda").serialize(),
+                    type: 'POST',
+                    dataType: "json",
+                    success: function (data) {
+                        var html = '';
+                        $.each(data, function (i, v) {
+                            html += '<tr>';
+                            html += '    <td>' + v.nombre + '</td>';
+                            html += '    <td>' + v.recibo.consecutivo + '</td>';
+                            html += '    <td>' + v.created_at + '</td>';
+                            html += '    <td>';
+                            html += '        <a class="btn btn-success btn-sm" href="/recibos/getFile/' + v.id + '"><i class="fa fa-download"></i></a>';
+                            html += '    </td>';
+                            html += '</tr>';
                         });
-                    } else {
-                        alert('Ingresa número de recibo')
+                        $("#tableBusqueda tbody").html(html);
+                    }, error: function (data) {
+                        var html = '';
+                        html += '<tr>';
+                        html += '<td colspan="5"><h3 id="labelError" class="text-center" ></td>';
+                        html += '</tr>'
+                        $("#tableBusqueda tbody").html(html);
+                        $("#labelError").text(data.responseText);
                     }
-                } else {
-                    alert('Ingresa año de recibo')
-                }
-
+                });
             } else {
-                alert('Selecciona tipo de recibo')
+                alert('Ingresa al menos un criterio de busqueda')
             }
         });
     </script>

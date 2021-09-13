@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 //use App\Citas;
 //use App\Eventos;
+use App\Documento;
 use App\Mail\Token;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -86,29 +87,29 @@ class SolicitudController extends Controller
         }
     }
 
-    public function busqueda()
+    public function busqueda(Request $request)
     {
-        $servidor = ServidorPublico::find($this->request->servidor_id);
-        if ($servidor != null) {
-            foreach ($servidor->documentos as $documento) {
-                if ($documento->recibo->tipo_recibo_id == $this->request->tipo_recibo_id) {
-                    if ($documento->recibo->anio == $this->request->anio) {
-                        $tipo = "A";
-                        if ($this->request->tipo_recibo_id == 1) {
-                            $tipo = "Q";
-                        }
-                        $consecutivo = $tipo . sprintf("%02d", $this->request->consecutivo);
-                        if ($documento->recibo->consecutivo == $consecutivo) {
-                            $documento->recibo->nombre = $documento->recibo->tipoRecibo->nombre;
-                            return $documento;
-                            break;
-                        }
-                    }
-                }
+        $documentos = Documento::query();
+        $documentos->where("servidor_publico_id", $request->servidor_id);
+        $documentos->whereHas("recibo", function ($q) {
+            if (!is_null($this->request->anio)) {
+                $q->where("anio", $this->request->anio);
             }
-            return response('No se encuentran datos', 500);
+
+            if (!is_null($this->request->tipo_recibo_id)) {
+                $q->where("tipo_recibo_id", $this->request->tipo_recibo_id);
+            }
+
+            if (!is_null($this->request->numero)) {
+                $q->where("consecutivo", "like", "%" . $this->request->numero . "%");
+            }
+        })->with("recibo");
+        $documentos = $documentos->orderBy("id", "DESC")->get()->take(5);
+        if (count($documentos)) {
+            return json_encode($documentos);
+        } else {
+            return response("No se encontrarón resultados con los criterios ingresados.", 404);
         }
-        return response('No se encuentro al servidor público', 500);
     }
 
     private function random_number($length)

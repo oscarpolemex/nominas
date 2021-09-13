@@ -41,10 +41,10 @@ Route::get('getServidores', 'ServidorPublicoController@getServidores')->name('ge
 Route::get('validarServidorPublico/{id}', 'ServidorPublicoController@validarRegistro')->name('validarServidorPublico');
 Route::get('eliminaServidoresPublicos', 'ServidorPublicoController@deleteServidoresPublicosView')->name('eliminaServidoresPublicosView');
 Route::post('eliminaServidoresPublicos', 'ServidorPublicoController@deleteServidoresPublicos')->name('eliminaServidoresPublicos');
-Route::get('recibos/busqueda/{tipo_recibo_id}/{anio}/{consecutivo}/{servidor_id}', 'SolicitudController@busqueda');
+Route::post('recibos/busqueda', 'SolicitudController@busqueda');
 Route::get('recibos/getFile/{id}', 'DocumentoController@getFile');
-Route::resource("eventos", "EventosController")->name("*","eventos");
-Route::resource("citas", "CitasController")->name("*","citas");
-Route::resource("solicitud_prestamos", "SolicitudPrestamoController")->name("*","solicitud_prestamos");
-Route::resource("revision_prestamos", "RevisionPrestamosController")->name("*","revision_prestamos");
+Route::resource("eventos", "EventosController")->name("*", "eventos");
+Route::resource("citas", "CitasController")->name("*", "citas");
+Route::resource("solicitud_prestamos", "SolicitudPrestamoController")->name("*", "solicitud_prestamos");
+Route::resource("revision_prestamos", "RevisionPrestamosController")->name("*", "revision_prestamos");
 Route::get("get-solicitud/{id}", "RevisionPrestamosController@getFile");

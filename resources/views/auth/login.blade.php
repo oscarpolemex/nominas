@@ -261,8 +261,11 @@
             </form>
         </div>
         <div class="bg-blue py-4">
-            <small class="ml-4 ml-sm-5 mb-2" style="text-align: center;">Av. Independencia No. 102, Col. Centro, C.P.
-                50000, Toluca México, Estado de México</small>
+            <small class="ml-4 ml-sm-5 mb-2" style="text-align: center;">Av. Independencia Ote. No. 102, Col. Centro,
+                C.P. 50000,
+                Toluca México, Estado de México.
+                Conmutador (722) 279-6400 Ext. 5185 y 5291
+                WhatsApp: 722 822 77 48 <i class="fa fa-whatsapp" aria-hidden="true"></i> <a class="btn-fill btn-blue sanbg" href="https://api.whatsapp.com/send?phone=7228227748&amp;text=Hi there! I have a question :)">Send Message</a></small>
 
 
         </div>

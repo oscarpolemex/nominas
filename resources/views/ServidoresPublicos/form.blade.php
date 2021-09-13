@@ -25,12 +25,12 @@
 </div>
 <div class="form-row">
     <div class="form-group col-md-6">
-        {!! Form::label('telefono_celular', 'Telefono celular:') !!}
+        {!! Form::label('telefono_celular', 'Telfono celular:') !!}
         {!! Form::text('telefono_celular',null,['class'=>'form-control', 'placeholder'=>'P. EJ. 7222796400',  'id' => 'celular']) !!}
         <span class="text-danger" style="font-size:150%"></span>
     </div>
     <div class="form-group col-md-4">
-        {!! Form::label('telefono_contacto', 'Telefono de oficina:') !!}
+        {!! Form::label('telefono_contacto', 'Teléfono de oficina:') !!}
         {!! Form::text('telefono_contacto',null,['class'=>'form-control', 'placeholder'=>'P. EJ. 7222796400',  'id' => 'telContacto']) !!}
         <span class="text-danger" style="font-size:150%"></span>
     </div>

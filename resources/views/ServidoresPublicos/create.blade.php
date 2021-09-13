@@ -32,15 +32,15 @@
                     </div>
                     <div class="mt-2"></div>
                     <ul>
-                        <li><strong>Nombre completo</strong> (ingrese el nombre y apellidos completos, sin abreviaturas,
+                        <li><strong>Nombre completo</strong> (ingrese apellido y nombre(s), sin abreviaturas,
                             en caso de ser más de uno incluya los datos de cada uno);
                             abreviaturas, en caso
                             de ser más de uno incluya los datos de cada uno.
                         </li>
 
-                        <li><strong>CURP</strong> (Clave Única de Registro de Población), escribir los 18 caracteres
-                            como la emitió la Secretaria de Gobernación. En caso de no contar con ella, podrá
-                            consultarla en la página de la citada Secretaría, en el apartado de Trámites;
+                        <li><strong>CURP</strong> (Clave Única de Registro de Población), escribir los 18 caracteres que
+                            aparecen en su último comprobante impreso. En caso de que requiera actualizarla ponerse en
+                            contacto con el Departamento de Personal.
                         </li>
 
                         <li><strong>Correo electrónico</strong> (Dirección de correo electrónico, en minúsculas y sin
@@ -173,7 +173,7 @@
                     return false;
                 } else if (!validaCelular.test(celular)) {
                     $("#celular").children().attr("class", "text-danger");
-                    $("#celular").parent().children("span").text("¡Debe ingresar un número de telefono a 10 digitos!").show();
+                    $("#celular").parent().children("span").text("¡Debe ingresar un número de telefono a 10 dígitos!").show();
                     return false;
                 } else {
                     $("#celular").children().attr("class", "has-success ");
@@ -191,7 +191,7 @@
                     return false;
                 } else if (!validaTelContacto.test(telContacto)) {
                     $("#telContacto").children().attr("class", "text-danger");
-                    $("#telContacto").parent().children("span").text("¡Debe ingresar un número de telefono a 10 digitos!").show();
+                    $("#telContacto").parent().children("span").text("¡Debe ingresar un número de telefono a 10 dígitos!").show();
                     return false;
                 } else {
                     $("#telContacto").children().attr("class", "has-success ");
