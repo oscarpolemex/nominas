@@ -46,7 +46,7 @@ class SolicitudController extends Controller
                 $this->request->session()->put("token", base64_encode($servidor->token));
                 $this->request->session()->forget("c_electronico");
                 $this->request->session()->put("c_electronico", base64_encode($servidor->c_electronico));
-                return redirect()->back()->withErrors(["success" => "Se envió un enlace de validación a tu correo electrónico, revisa la bandeja de entrada e ingresa y presión el botón \"Ver recibos de nómina.\""]);
+                return redirect()->back()->withErrors(["success" => "Se envió un enlace de validación a tu correo electrónico, revisa la bandeja de entrada e ingresa y presióna el botón \"Ver recibos de nómina.\""]);
             } else {
                 return redirect()->back()->withErrors(["error" => "Su registro aún no ha sido validado. Consulte con su administrador."]);
             }

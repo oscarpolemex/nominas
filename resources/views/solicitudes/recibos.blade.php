@@ -5,11 +5,11 @@
         <div class="card">
             <div class="card-header bg-info  border-0 py-3 d-flex align-items-center"
                  style="background-color:#F1F1F1 !important;">
-                <div class="col-11">
-                    <h3 class="card-title mb-0" style="line-height: 12px;">Portal de Gestión Interna</h3><br>
+                <div class="col-lg-10 col-sm-12">
+                    <h3 class="card-title mb-0" style="line-height: 25px;">Portal de Gestión Interna</h3><br>
                     <h4 class="card-title mb-0">Comprobantes de percepciones y deducciones.</h4>
                 </div>
-                <div class="col-1">
+                <div class="col-lg-2 col-sm-12">
                     <button class="btn btn-primary mr-5" id='btnBuscar'>
                         <i class="fa fa-search"></i>
                     </button>
@@ -33,7 +33,7 @@
                                 <tr>
                                     <td class="text-center">{{$item->recibo->tipoRecibo->nombre}}</td>
                                     <td class="text-center">{{$item->recibo->consecutivo}}</td>
-                                    <td class="text-center">{{\Carbon\Carbon::create($item->created_at)->format("d/m/Y")}}</td>
+                                    <td class="text-center">{{\Carbon\Carbon::createFromFormat("Y-m-d h:i:s", $item->created_at)->format("d/m/Y")}}</td>
                                     <td class="text-center">{{$item->nombre}}</td>
                                     <td class="text-center">
                                         <a class="btn btn-success btn-sm" href="/recibos/getFile/{{$item->id}}"><i
