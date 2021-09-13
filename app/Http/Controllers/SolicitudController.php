@@ -60,6 +60,7 @@ class SolicitudController extends Controller
         if ($this->request->token != "") {
             $token = base64_decode($this->request->token);
             $correo = base64_decode($this->request->c_electronico);
+            dd("si");
             if (Cache::has($token)) {
                 $servidor = Cache::get($token);
                 if ($servidor->c_electronico == $correo) {
