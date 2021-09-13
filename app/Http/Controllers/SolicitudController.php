@@ -37,7 +37,7 @@ class SolicitudController extends Controller
                     return view('solicitudes.solicitud')->withErrors(["c_electronico" => "Ya se ha enviado la liga previemente"]);
                 } else {
                     $servidor->token = $token;
-                    $expiresAt = Carbon::now()->addMinutes(60);
+                    $expiresAt = Carbon::now()->addMinutes(7);
                     Cache::put($servidor->token, $servidor, $expiresAt);
                 }
                 $liga = asset("/") . "validar_token/" . base64_encode($servidor->token) . "/" . base64_encode($servidor->c_electronico);
