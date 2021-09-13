@@ -63,7 +63,6 @@ class SolicitudController extends Controller
             if (Cache::has($token)) {
                 $servidor = Cache::get($token);
                 if ($servidor->c_electronico == $correo) {
-                    dd("si");
                     $servidor->documentos = $servidor->documentos->sortByDesc("id")->take(12);
                     $tiporecibo = TipoRecibo::all();
 //                    $evento = Eventos::where("estatus", "!=", 0)->get();
@@ -76,6 +75,7 @@ class SolicitudController extends Controller
 //                        }
 //                    }
                     $token = $this->request->token;
+                    dd("si");
                     return view('solicitudes.recibos', compact('servidor', 'tiporecibo', 'token'));
                 } else {
                     return redirect()->back()->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);
