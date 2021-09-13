@@ -46,12 +46,12 @@ class SolicitudController extends Controller
                 $this->request->session()->put("token", base64_encode($servidor->token));
                 $this->request->session()->forget("c_electronico");
                 $this->request->session()->put("c_electronico", base64_encode($servidor->c_electronico));
-                return view('solicitudes.solicitud')->withErrors(["success" => "Se envió un enlace de validación a tu correo electrónico, revisa la bandeja de entrada e ingresa y presión el botón \"Ver recibos de nómina.\""]);
+                return redirect()->back()->withErrors(["success" => "Se envió un enlace de validación a tu correo electrónico, revisa la bandeja de entrada e ingresa y presión el botón \"Ver recibos de nómina.\""]);
             } else {
-                return view('solicitudes.solicitud')->withErrors(["error" => "Su registro aún no ha sido validado. Consulte con su administrador."]);
+                return redirect()->back()->withErrors(["error" => "Su registro aún no ha sido validado. Consulte con su administrador."]);
             }
         } else {
-            return view('solicitudes.solicitud')->withErrors(["error" => "No existe servidor publico registrado con la dirección de correo electrónico ingresada"]);
+            return redirect()->back()->withErrors(["error" => "No existe servidor publico registrado con la dirección de correo electrónico ingresada"]);
         }
     }
 
@@ -77,13 +77,13 @@ class SolicitudController extends Controller
                     $token = $this->request->token;
                     return view('solicitudes.recibos', compact('servidor', 'tiporecibo', 'token'));
                 } else {
-                    return view('solicitudes.solicitud')->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);
+                    return redirect()->back()->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);
                 }
             } else {
-                return view('solicitudes.solicitud')->withErrors(["c_electronico" => "El token caducó, por favor solicita uno"]);
+                return redirect()->back()->withErrors(["c_electronico" => "El token caducó, por favor solicita uno"]);
             }
         } else {
-            return view('solicitudes.solicitud')->withErrors(["c_electronico" => "No existe el token, por favor solicita otro"]);
+            return redirect()->back()->withErrors(["c_electronico" => "No existe el token, por favor solicita otro"]);
         }
     }
 
