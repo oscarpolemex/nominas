@@ -33,7 +33,7 @@
                                 <tr>
                                     <td class="text-center">{{$item->recibo->tipoRecibo->nombre}}</td>
                                     <td class="text-center">{{$item->recibo->consecutivo}}</td>
-                                    <td class="text-center">{{\Carbon\Carbon::create($item->created_at)->format("d/m/Y")}}</td>
+                                    <td class="text-center">{{$item->created_at}}</td>
                                     <td class="text-center">{{$item->nombre}}</td>
                                     <td class="text-center">
                                         <a class="btn btn-success btn-sm" href="/recibos/getFile/{{$item->id}}"><i
