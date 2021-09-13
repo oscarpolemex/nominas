@@ -171,7 +171,7 @@
                     }
                 });
             } else {
-                alert('Ingresa al menos un criterio de busqueda')
+                alert('Ingresa al menos un criterio de búsqueda')
             }
         });
     </script>
