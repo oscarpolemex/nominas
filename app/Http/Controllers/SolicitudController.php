@@ -75,7 +75,6 @@ class SolicitudController extends Controller
 //                        }
 //                    }
                     $token = $this->request->token;
-                    dd("si");
                     return view('solicitudes.recibos', compact('servidor', 'tiporecibo', 'token'));
                 } else {
                     return redirect()->back()->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);
