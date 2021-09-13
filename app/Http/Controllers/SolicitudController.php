@@ -61,9 +61,8 @@ class SolicitudController extends Controller
             $token = base64_decode($this->request->token);
             $correo = base64_decode($this->request->c_electronico);
             if (Cache::has($token)) {
-                dd("si");
-
                 $servidor = Cache::get($token);
+                dd("si");
                 if ($servidor->c_electronico == $correo) {
                     $servidor->documentos = $servidor->documentos->sortByDesc("id")->take(12);
                     $tiporecibo = TipoRecibo::all();
