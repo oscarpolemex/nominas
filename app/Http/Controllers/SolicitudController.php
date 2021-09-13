@@ -80,10 +80,10 @@ class SolicitudController extends Controller
                     return redirect()->back()->withErrors(["c_electronico" => "El correo electronico no coincide con el token asignado"]);
                 }
             } else {
-                return redirect()->back()->withErrors(["c_electronico" => "El token caducó, por favor solicita uno"]);
+                return redirect()->route("solicitud")->withErrors(["c_electronico" => "El token caducó, por favor solicita uno"]);
             }
         } else {
-            return redirect()->back()->withErrors(["c_electronico" => "No existe el token, por favor solicita otro"]);
+            return redirect()->route("solicitud")->withErrors(["c_electronico" => "No existe el token, por favor solicita otro"]);
         }
     }
 

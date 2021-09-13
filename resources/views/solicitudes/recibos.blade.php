@@ -16,34 +16,36 @@
                 </div>
             </div>
             <div class="card-body">
-                @if($servidor->documentos)
-                    <table class="table" id='tableRecibos' style="font-size: 17px">
-                        <thead>
-                        <tr>
-                            <th scope="col" class="text-center"> Tipo de Recibo</th>
-                            <th scope="col" class="text-center"> Número de Recibo</th>
-                            <th scope="col" class="text-center"> Fecha</th>
-                            <th scope="col" class="text-center"> Documento</th>
-                            <th scope="col" class="text-center"> Descargar</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($servidor->documentos as $item)
+                <div class="table-responsive">
+                    @if($servidor->documentos)
+                        <table class="table" id='tableRecibos' style="font-size: 17px">
+                            <thead>
                             <tr>
-                                <td class="text-center">{{$item->recibo->tipoRecibo->nombre}}</td>
-                                <td class="text-center">{{$item->recibo->consecutivo}}</td>
-                                <td class="text-center">{{$item->created_at}}</td>
-                                <td class="text-center">{{$item->nombre}}</td>
-                                <td class="text-center">
-                                    <a class="btn btn-success btn-sm" href="/recibos/getFile/{{$item->id}}"><i
-                                            class="fa fa-download"></i></a>
-                                </td>
-                        @endforeach
-                        </tbody>
-                    </table>
-                @else
-                    <h1>No hay documentos</h1>
-                @endif
+                                <th scope="col" class="text-center"> Tipo de Recibo</th>
+                                <th scope="col" class="text-center"> Número de Recibo</th>
+                                <th scope="col" class="text-center"> Fecha</th>
+                                <th scope="col" class="text-center"> Documento</th>
+                                <th scope="col" class="text-center"> Descargar</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($servidor->documentos as $item)
+                                <tr>
+                                    <td class="text-center">{{$item->recibo->tipoRecibo->nombre}}</td>
+                                    <td class="text-center">{{$item->recibo->consecutivo}}</td>
+                                    <td class="text-center">{{$item->created_at}}</td>
+                                    <td class="text-center">{{$item->nombre}}</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-success btn-sm" href="/recibos/getFile/{{$item->id}}"><i
+                                                class="fa fa-download"></i></a>
+                                    </td>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <h1>No hay documentos</h1>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
@@ -141,6 +143,7 @@
             $('#modalb').modal('show')
         })
         $('#btnBusqueda').on('click', function () {
+
             if ($('#tipo_recibo_id').val() !== '' || $('#anio').val() !== '' || $('#numero').val() != '') {
                 $.ajax({
                     url: '/recibos/busqueda/',
@@ -151,10 +154,12 @@
                     success: function (data) {
                         var html = '';
                         $.each(data, function (i, v) {
+                            let fecha = new Date(v.created_at);
+                            var options = {year: 'numeric', month: 'numeric', day: 'numeric'};
                             html += '<tr>';
                             html += '    <td>' + v.nombre + '</td>';
                             html += '    <td>' + v.recibo.consecutivo + '</td>';
-                            html += '    <td>' + v.created_at + '</td>';
+                            html += '    <td>' + fecha.toLocaleDateString("es-ES", options) + '</td>';
                             html += '    <td>';
                             html += '        <a class="btn btn-success btn-sm" href="/recibos/getFile/' + v.id + '"><i class="fa fa-download"></i></a>';
                             html += '    </td>';
