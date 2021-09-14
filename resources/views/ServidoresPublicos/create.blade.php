@@ -91,7 +91,19 @@
                 correoConfirm();
                 if (nombreValidate() === true && curpValidate() === true && correoValidate() === true
                     && celularValidate() === true && telContactoValidate() === true && correoConfirm() === true) {
+                    @if(auth()->user())
                     $('#formServidorPublico').submit();
+                    @else
+                    if ($("#aviso-check").is(':checked') && $("#terminos-check").is(':checked')) {
+                        $('#formServidorPublico').submit();
+                    } else {
+                        swal({
+                            title: 'Por favor acepta "Términos y condiciones de uso", así como el "Aviso de privacidad".',
+                            icon: "warning",
+                            buttons: true,
+                        });
+                    }
+                    @endif
                 }
             });
 
