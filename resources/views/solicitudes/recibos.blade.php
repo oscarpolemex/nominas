@@ -60,7 +60,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <form id="form-busqueda">
+                        <form id="form-busqueda" method="post">
                             @csrf
                             <input type="text" name="servidor_id" value="{{$servidor->id}}" hidden>
                             <div class='row'>
