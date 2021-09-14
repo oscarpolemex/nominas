@@ -146,7 +146,7 @@
 
             if ($('#tipo_recibo_id').val() !== '' || $('#anio').val() !== '' || $('#numero').val() != '') {
                 $.ajax({
-                    url: '/recibos/busqueda/',
+                    url: '{{asset("/recibos/busqueda")}}',
                     async: true,
                     data: $("#form-busqueda").serialize(),
                     type: 'POST',
