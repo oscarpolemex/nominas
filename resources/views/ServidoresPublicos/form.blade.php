@@ -43,27 +43,26 @@
 <div class="form-row text-center">
     @yield('validar')
     @if(!auth()->user())
-        <div class="col-8">
+        <div class="col-lg-4">
         </div>
-        <div class="col">
-            <p style="float: right;">
-                <label>
-                    <input type="checkbox" name="terminos" id="terminos-check" class="filled-in" disabled/>
-                    <a id="terminos">Términos y condiciones de uso</a>
+        <div class="col-lg-5 col-sm-12">
+            <p style="float: left;">
+                <label id="terminos">
+                    <input type="checkbox" name="terminos" id="terminos-check" class="filled-in"/>
+                    <span style="color: #9c024c">Términos y condiciones de uso</span>
+                </label>
+            </p>
+            <p class="ml-lg-4" style="float: left;">
+                <label id="aviso">
+                    <input type="checkbox" id="aviso-check" class="filled-in"/>
+                    <span style="color: #9c024c">Aviso de privacidad</span>
                 </label>
             </p>
         </div>
-        <div class="col">
-            <p style="float: right;">
-                <label>
-                    <input type="checkbox" id="aviso-check" class="filled-in" disabled/>
-                    <a id="aviso">Aviso de privacidad</a>
-                </label>
-            </p>
-        </div>
+
     @endif
-    <div class="col btn-enviar">
-        {{ Form::button('Enviar', ['type' => 'submit', 'class' => 'btn btn-submit text-light', 'id' => 'btnSubmitForm', "style" => "float: right;"] )  }}
+    <div class="col-lg-2 btn-enviar">
+        {{ Form::button('Enviar', ['type' => 'submit', 'class' => 'btn btn-submit text-light', 'id' => 'btnSubmitForm', "style" => "float: right;!important"] )  }}
     </div>
 </div>
 

@@ -153,11 +153,16 @@ class ServidorPublicoController extends Controller
 
     public function validaCurp($crit)
     {
-        $exist = ServidorPublico::where('curp', '=', $crit)->where('registrado', '=', true)->get();
-        if (count($exist)) {
-            return 1;
+        $exist = ServidorPublico::where('curp', '=', $crit)->first();
+
+        if ($exist) {
+            if ($exist->registrado) {
+                return 1;
+            } else {
+                return 2;
+            }
         } else {
-            return 2;
+            return 3;
         }
     }
 

@@ -195,7 +195,7 @@
                 <div class="card1 pb-5">
                     <div class="row"><br><br><br><br></div>
                     <div class="row px-3 justify-content-center mt-4 mb-5 border-line"><img
-                            src="{{asset("/IMG/logo_SAF_Legislatura.svg")}}" class="image"></div>
+                            src="{{asset("/IMG/LXI_LEGISLATURA_VERTICAL.svg")}}" class="image"></div>
                 </div>
             </div>
 

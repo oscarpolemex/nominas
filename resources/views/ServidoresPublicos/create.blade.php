@@ -98,7 +98,7 @@
                         $('#formServidorPublico').submit();
                     } else {
                         swal({
-                            title: 'Por favor acepta "Términos y condiciones de uso", así como el "Aviso de privacidad".',
+                            title: 'Acepta los términos y condiciones, así como el aviso de privacidad para el uso de datos personales.',
                             icon: "warning",
                             buttons: true,
                         });
@@ -261,7 +261,11 @@
                         success: function (json) {
                             if (json === 1) {
                                 $("#curp").children().attr("class", "text-danger");
-                                $("#curp").parent().children("span").text("¡La curp ya existe!").show();
+                                $("#curp").parent().children("span").text("¡La curp ya fue validada previamente!").show();
+                                $("#curp").val('');
+                            } else if (json === 3) {
+                                $("#curp").children().attr("class", "text-danger");
+                                $("#curp").parent().children("span").text("¡La curp ingresada no pertenece a un servidor público!").show();
                                 $("#curp").val('');
                             } else {
                                 $("#curp").children().attr("class", "has-success ");

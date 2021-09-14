@@ -158,7 +158,7 @@
     @if(auth()->user())
         <nav id="sidebar" style="background-color: #9c024c ">
             <div class="sidebar-header" style="background-color: #9c024c ">
-                <img src="{{url('IMG/logo.svg')}}" class="img" width="90%">
+                <img src="{{url('IMG/logo_legislatura solo.svg')}}" class="img" width="90%">
                 <br>
             </div>
             <ul class="list-unstyled components">
@@ -190,7 +190,7 @@
     <div id="content">
         <nav class="navbar navbar-expand-lg" style="background-color: #9c024c ">
             @if(!auth()->user())
-                <img src="{{asset('IMG/logo_SAF_Legislatura_2.svg')}}" class="img" width="20%">
+                <img src="{{asset('IMG/logo_SAF_Legislatura_horizontal.svg')}}" class="img" width="20%">
             @endif
             @if(auth()->user())
                 <div class="container-fluid">
