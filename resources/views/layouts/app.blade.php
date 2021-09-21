@@ -190,7 +190,7 @@
     <div id="content">
         <nav class="navbar navbar-expand-lg" style="background-color: #9c024c ">
             @if(!auth()->user())
-                <img src="{{asset('IMG/logo_SAF_Legislatura_horizontal.svg')}}" class="img" width="20%">
+                <img src="{{asset('IMG/logo_SAF_Legislatura2.svg')}}" class="img" width="20%">
             @endif
             @if(auth()->user())
                 <div class="container-fluid">
