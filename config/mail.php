@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' =>  'nominasplem@cddiputados.gob.mx',
-        'name' =>  'Portal de Gestión Interna',
+        'address' =>  env('MAIL_FROM_ADDRESS','nominasplem@cddiputados.gob.mx'),
+        'name' =>  env('MAIL_FROM_NAME','Portal de Gestión Interna')
     ],
 
     /*
